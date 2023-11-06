@@ -1,10 +1,7 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @user_pdf %>
-
 <div>
   <%= link_to "Edit this user pdf", edit_user_pdf_path(@user_pdf) %> |
   <%= link_to "Back to user pdfs", user_pdfs_path %>
-
   <%= button_to "Destroy this user pdf", @user_pdf, method: :delete %>
 </div>
