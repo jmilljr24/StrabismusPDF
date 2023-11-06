@@ -1,7 +1,5 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>User pdfs</h1>
-
 <div id="user_pdfs">
   <% @user_pdfs.each do |user_pdf| %>
     <%= render user_pdf %>
@@ -10,5 +8,4 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New user pdf", new_user_pdf_path %>
+<%= link_to "Click here to start an upload", new_user_pdf_path %>
