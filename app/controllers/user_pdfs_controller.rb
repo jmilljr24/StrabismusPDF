@@ -5,12 +5,15 @@ class UserPdfsController < ApplicationController
 
   # GET /user_pdfs or /user_pdfs.json
   def index
-    @user_pdfs = UserPdf.all
+    # @user_pdfs = UserPdf.all
+    return unless UserPdf.count > 5
+
+    UserPdf.first.destroy
   end
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
   def show # rubocop:disable Metrics/
-    file = ActiveStorage::Blob.first
+    file = ActiveStorage::Blob.last
     file.open do |tempfile|
       doc = HexaPDF::Document.open(tempfile.path)
       doc.pages.each_with_index do |page, index|

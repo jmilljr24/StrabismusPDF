@@ -1,11 +1,8 @@
 <p style="color: green"><%= notice %></p>
-<h1>User pdfs</h1>
-<div id="user_pdfs">
-  <% @user_pdfs.each do |user_pdf| %>
-    <%= render user_pdf %>
-    <p>
-      <%= link_to "Show this user pdf", user_pdf %>
-    </p>
-  <% end %>
+<h1> This is a site to upload Vans RV Kitplans and have the part numbers
+  highlighted with colors matching the text with the picture. It currently only
+  has the parts list for the Empanage.
+</h1>
 </div>
-<%= link_to "Click here to start an upload", new_user_pdf_path %>
+<%= link_to "Click here to start an upload", new_user_pdf_path, class: "shadow bg-blue-700 hover:bg-blue-400 focus:shadow-outline
+  focus:outline-none text-white font-bold py-2 px-4 rounded max-w-min" %>
