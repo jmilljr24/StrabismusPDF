@@ -1,3 +1,5 @@
+# require_relative '.../app/string_boxes_processor'
+
 class UserPdfsController < ApplicationController
   before_action :set_user_pdf, only: %i[show edit update destroy]
 
@@ -7,7 +9,35 @@ class UserPdfsController < ApplicationController
   end
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
-  def show; end
+  def show # rubocop:disable Metrics/
+    file = ActiveStorage::Blob.first
+    file.open do |tempfile|
+      doc = HexaPDF::Document.open(tempfile.path)
+      doc.pages.each_with_index do |page, index|
+        puts "Processing page #{index + 1}"
+        processor = if index == 0
+                      StringBoxesProcessor.new(page)
+                    else
+                      StringBoxesProcessor.new(page, @color_key)
+                    end
+        page.process_contents(processor)
+        str_boxes = processor.str_boxes
+        processor.match(str_boxes)
+        page_parts = processor.page_parts
+
+        both_pages = @prev_page_parts & processor.current_page_parts.uniq
+
+        processor.assign_color(page_parts, both_pages)
+        processor.color(page_parts)
+        @color_key = processor.color_key
+        @prev_page_parts = processor.current_page_parts.uniq
+      end
+      @filename = Rails.root.join('tmp', 'Plans_Highlight.pdf').to_s
+      doc.write(@filename, optimize: true)
+      file = File.open(@filename)
+      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: 'Highlights.pdf')
+    end
+  end
 
   # GET /user_pdfs/new
   def new
@@ -65,5 +95,13 @@ class UserPdfsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_pdf_params
     params.require(:user_pdf).permit(:pdf)
+  end
+
+  def process_pdf_hightlights(user_pdf_params)
+    return unless user_pdf_params
+
+    begin
+    rescue StandardError
+    end
   end
 end
