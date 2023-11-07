@@ -120,29 +120,29 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
   end
 end
 
-@color_key = {}
-@prev_page_parts = nil
+# @color_key = {}
+# @prev_page_parts = nil
 
-doc = HexaPDF::Document.open(ARGV.shift)
-# doc = HexaPDF::Document.open('06_10.pdf')
+# doc = HexaPDF::Document.open(ARGV.shift)
+# # doc = HexaPDF::Document.open('06_10.pdf')
 
-doc.pages.each_with_index do |page, index|
-  puts "Processing page #{index + 1}"
-  processor = if index == 0
-                StringBoxesProcessor.new(page)
-              else
-                StringBoxesProcessor.new(page, @color_key)
-              end
-  page.process_contents(processor)
-  str_boxes = processor.str_boxes
-  processor.match(str_boxes)
-  page_parts = processor.page_parts
+# doc.pages.each_with_index do |page, index|
+#   puts "Processing page #{index + 1}"
+#   processor = if index == 0
+#                 StringBoxesProcessor.new(page)
+#               else
+#                 StringBoxesProcessor.new(page, @color_key)
+#               end
+#   page.process_contents(processor)
+#   str_boxes = processor.str_boxes
+#   processor.match(str_boxes)
+#   page_parts = processor.page_parts
 
-  both_pages = @prev_page_parts & processor.current_page_parts.uniq
+#   both_pages = @prev_page_parts & processor.current_page_parts.uniq
 
-  processor.assign_color(page_parts, both_pages)
-  processor.color(page_parts)
-  @color_key = processor.color_key
-  @prev_page_parts = processor.current_page_parts.uniq
-end
-doc.write('show_char_boxes.pdf', optimize: true)
+#   processor.assign_color(page_parts, both_pages)
+#   processor.color(page_parts)
+#   @color_key = processor.color_key
+#   @prev_page_parts = processor.current_page_parts.uniq
+# end
+# doc.write('show_char_boxes.pdf', optimize: true)

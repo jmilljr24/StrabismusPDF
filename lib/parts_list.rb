@@ -2,7 +2,7 @@ require 'csv'
 
 module SectionParts
   # file = CSV.read('rv10section4parts.csv')
-  file = CSV.read('emp_part_list.csv')
+  file = CSV.read('./lib/emp_part_list.csv')
 
   parts = []
   file.each { |c| parts << c[0] }
