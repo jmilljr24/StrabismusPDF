@@ -1,9 +1,9 @@
 require 'csv'
 
-module SectionParts
+module PartsList
   # file = CSV.read('rv10section4parts.csv')
-  file = CSV.read('./lib/emp_part_list.csv')
-
+  # file = CSV.read('./lib/emp_part_list.csv')
+  file = %w[test one]
   parts = []
   file.each { |c| parts << c[0] }
   define_method(:getParts) { parts }

@@ -5,7 +5,7 @@ require_relative 'parts_list'
 #
 
 class StringBoxesProcessor < HexaPDF::Content::Processor
-  include SectionParts
+  include PartsList
 
   attr_accessor :page_parts, :text_box_parts, :str_boxes, :used_colors, :current_page_parts, :color_key
 
