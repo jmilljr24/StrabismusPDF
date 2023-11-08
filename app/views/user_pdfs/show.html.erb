@@ -1,5 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <%= render @user_pdf %>
+
 <div>
+  <%= link_to "Your new file", parse_file_path %>
   <%= link_to "Home", root_path %>
 </div>

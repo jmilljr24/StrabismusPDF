@@ -1,0 +1,7 @@
+<%= form_with url: '/parse' , multipart: true do |form| %>
+  <%= file_field_tag :file %>
+ <%=  form.submit "form" %>
+<% end %>
+<h1> <%= puts @new_file_name %> </h1>
+<%= link_to "Highlighted File", "/#{@new_file_name}" %>
+<%= link_to "Download file", download_path(:new_file_name) %>

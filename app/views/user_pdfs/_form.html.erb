@@ -13,6 +13,10 @@
     <%= form.label :pdf, class: 'form-label' %>
     <%= form.file_field :pdf, class: 'form-control' %>
   </div>
+  <div>
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
   <div class="shadow bg-blue-700 hover:bg-blue-400 focus:shadow-outline
   focus:outline-none text-white font-bold py-2 px-4 rounded max-w-min">
     <%= form.submit "Click to generate Highlighted PDf" %>
