@@ -9,6 +9,8 @@ class ParseController < ApplicationController
 
   def parse_file # rubocop:disable Metrics/
     uploaded_file = params[:file]
+    return if uploaded_file.nil?
+
     errors.add(:pdf, 'is too big. Max 10MB') unless File.size(uploaded_file) <= 10.megabyte
     unless uploaded_file.content_type.in?(%w[application/pdf])
 
