@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-        <%= link_to "Home", root_path, class: "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
-
+    <%= javascript_include_tag "application", "data-turbo-track": "reload",
+    defer: true %>
+    <%= link_to "Home", root_path, class: "absolute bg-white m-1 top-0 left-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
   </head>
-
   <body>
     <div class="flex justify-center">
-    <%= yield %>
+      <%= yield %>
     </div>
   </body>
   <footer>
