@@ -1,3 +1,5 @@
 <%= link_to "Download file", download_path(new_file_name:
-params[:new_file_name]), class: "shadow bg-blue-700 hover:bg-blue-400 focus:shadow-outline
+params[:new_file_name]), class: "shadow min-w-max mt-10 bg-blue-700 hover:bg-blue-400 focus:shadow-outline
   focus:outline-none text-white font-bold py-2 px-4 rounded max-w-min" %>
+<% @new_file_name = params[:new_file_name] %>
+
