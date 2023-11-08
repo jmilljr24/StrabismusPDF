@@ -1,5 +1,5 @@
-<div class="flex justify-center"><%= form_with url: '/parse' , multipart: true do |form| %>
-    <div class="flex sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+<div class="flex justify-center pt-20"><%= form_with url: '/parse' , multipart: true do |form| %>
+    <div class="flex sm:grid-cols-3 sm:gap-4 ">
       <div class="mt-1 sm:mt-0 sm:col-span-2">
         <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
           <div class="space-y-1 text-center">
@@ -17,10 +17,10 @@
         </div>
       </div>
     </div>
-    <%=  form.submit "Submit", class: "block w-full my-1 text-sm text-green-900
+    <%=  form.submit "Submit", class: "block w-full my-3 text-sm text-green-900
   border hover:text-gray-400
-  border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400
-  focus:outline-none dark:bg-gray-700 dark:border-gray-600
+  border-gray-300 shadow-2xl rounded-lg cursor-pointer  bg-gray-50 dark:text-gray-100
+  focus:outline-none dark:bg-green-700 dark:border-gray-500
   dark:placeholder-gray-400" %>
   <% end %>
 </div>
