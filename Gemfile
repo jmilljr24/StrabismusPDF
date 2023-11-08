@@ -73,8 +73,6 @@ end
 
 gem 'rubocop', '~> 1.57'
 
-gem 'poppler', '~> 4.2'
-
 # gem 'hexapdf', path: './hexapdf-0.33.0'
 gem 'dockerfile-rails', '>= 1.5', group: :development
 gem 'hexapdf', github: 'jmilljr24/hexapdf'
