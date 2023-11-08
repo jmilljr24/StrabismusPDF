@@ -12,34 +12,34 @@ class UserPdfsController < ApplicationController
   end
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
-  def show # rubocop:disable Metrics/
-    file = ActiveStorage::Blob.last
-    file.open do |tempfile|
-      doc = HexaPDF::Document.open(tempfile.path)
-      doc.pages.each_with_index do |page, index|
-        puts "Processing page #{index + 1}"
-        processor = if index == 0
-                      StringBoxesProcessor.new(page)
-                    else
-                      StringBoxesProcessor.new(page, @color_key)
-                    end
-        page.process_contents(processor)
-        str_boxes = processor.str_boxes
-        processor.match(str_boxes)
-        page_parts = processor.page_parts
+  def show # /
+    # file = ActiveStorage::Blob.last
+    # file.open do |tempfile|
+    #   doc = HexaPDF::Document.open(tempfile.path)
+    #   doc.pages.each_with_index do |page, index|
+    #     puts "Processing page #{index + 1}"
+    #     processor = if index == 0
+    #                   StringBoxesProcessor.new(page)
+    #                 else
+    #                   StringBoxesProcessor.new(page, @color_key)
+    #                 end
+    #     page.process_contents(processor)
+    #     str_boxes = processor.str_boxes
+    #     processor.match(str_boxes)
+    #     page_parts = processor.page_parts
 
-        both_pages = @prev_page_parts & processor.current_page_parts.uniq
+    #     both_pages = @prev_page_parts & processor.current_page_parts.uniq
 
-        processor.assign_color(page_parts, both_pages)
-        processor.color(page_parts)
-        @color_key = processor.color_key
-        @prev_page_parts = processor.current_page_parts.uniq
-      end
-      @filename = Rails.root.join('tmp', 'Plans_Highlight.pdf').to_s
-      doc.write(@filename, optimize: true)
-      file = File.open(@filename)
-      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: 'Highlights.pdf')
-    end
+    #     processor.assign_color(page_parts, both_pages)
+    #     processor.color(page_parts)
+    #     @color_key = processor.color_key
+    #     @prev_page_parts = processor.current_page_parts.uniq
+    #   end
+    #   @filename = Rails.root.join('tmp', 'Plans_Highlight.pdf').to_s
+    #   doc.write(@filename, optimize: true)
+    #   file = File.open(@filename)
+    #   @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: 'Highlights.pdf')
+    # end
   end
 
   # GET /user_pdfs/new
@@ -85,6 +85,35 @@ class UserPdfsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_pdfs_url, notice: 'User pdf was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def parse_file # rubocop:disable Metrics/
+    uploaded_file = params[:file]
+    File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
+      # file.write(uploaded_file.read)
+      doc = HexaPDF::Document.open(file.path)
+      doc.pages.each_with_index do |page, index|
+        puts "Processing page #{index + 1}"
+        processor = if index == 0
+                      StringBoxesProcessor.new(page)
+                    else
+                      StringBoxesProcessor.new(page, @color_key)
+                    end
+        page.process_contents(processor)
+        str_boxes = processor.str_boxes
+        processor.match(str_boxes)
+        page_parts = processor.page_parts
+
+        both_pages = @prev_page_parts & processor.current_page_parts.uniq
+
+        processor.assign_color(page_parts, both_pages)
+        processor.color(page_parts)
+        @color_key = processor.color_key
+        @prev_page_parts = processor.current_page_parts.uniq
+      end
+      doc.write(uploaded_file.original_filename, optimize: true)
+      send_file(uploaded_file.original_filename)
     end
   end
 
