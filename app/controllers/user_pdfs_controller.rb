@@ -88,35 +88,6 @@ class UserPdfsController < ApplicationController
     end
   end
 
-  def parse_file # rubocop:disable Metrics/
-    uploaded_file = params[:file]
-    File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-      # file.write(uploaded_file.read)
-      doc = HexaPDF::Document.open(file.path)
-      doc.pages.each_with_index do |page, index|
-        puts "Processing page #{index + 1}"
-        processor = if index == 0
-                      StringBoxesProcessor.new(page)
-                    else
-                      StringBoxesProcessor.new(page, @color_key)
-                    end
-        page.process_contents(processor)
-        str_boxes = processor.str_boxes
-        processor.match(str_boxes)
-        page_parts = processor.page_parts
-
-        both_pages = @prev_page_parts & processor.current_page_parts.uniq
-
-        processor.assign_color(page_parts, both_pages)
-        processor.color(page_parts)
-        @color_key = processor.color_key
-        @prev_page_parts = processor.current_page_parts.uniq
-      end
-      doc.write(uploaded_file.original_filename, optimize: true)
-      send_file(uploaded_file.original_filename)
-    end
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

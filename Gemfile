@@ -73,7 +73,7 @@ end
 
 gem 'rubocop', '~> 1.57'
 
-# gem 'poppler', '~> 4.2'
+gem 'poppler', '~> 4.2'
 
 # gem 'hexapdf', path: './hexapdf-0.33.0'
 gem 'dockerfile-rails', '>= 1.5', group: :development
@@ -85,4 +85,4 @@ gem 'sentry-rails', '~> 5.12'
 
 gem 'glib2'
 
-gem "redis", "~> 5.0"
+gem 'redis', '~> 5.0'
