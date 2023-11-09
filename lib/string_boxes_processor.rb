@@ -13,7 +13,7 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
     super()
     @canvas = page.canvas(type: :overlay)
 
-    @colors = %w[cyan deeppink olivedrab blue lavender honeydew mediumspringgreen steelblue blueviolet orangered darkorange darksalmon darkslateblue lime tomato hp-teal-dark2 springgreen
+    @colors = %w[cyan deeppink olivedrab blue lavender dimgrey mediumspringgreen steelblue blueviolet orangered darkorange darksalmon darkslateblue lime tomato hp-teal-dark2 springgreen
                  darkgoldenrod magenta crimson maroon]
     @used_colors = []
     @parts = getParts
