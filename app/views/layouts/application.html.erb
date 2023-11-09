@@ -18,11 +18,7 @@
         <%= image_tag("plane-96.png", size: '60x40' ) %>
        <div>
       <%= link_to "Home", root_path, class: " text-[rgb(80,124,92)] m-2 top-0 hover:text-gray-400 font-semibold py-2 px-2" %>
-      <% flash.each do |type, msg| %>
-        < class="mb-3 inline-flex justify-center w-full items-center rounded-lg bg-primary-100 px-6 py-5 text-base text-primary-700">
-        <%= msg %>
-        </div>
-      <% end %>
+ 
  
       <a href="https://www.buymeacoffee.com/vansrvcolorcode" class=" top-0
          m-2 p-2 
@@ -31,7 +27,11 @@
       </div>
        </div>
     </div>
-
+     <% flash.each do |type, msg| %>
+        <div class="mb-3 inline-flex justify-center w-full items-center rounded-lg bg-primary-100 px-6 py-5 text-base text-primary-700">
+        <%= msg %>
+        </div>
+      <% end %>
       <%= yield %>
     
     
