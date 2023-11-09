@@ -10,6 +10,15 @@
     defer: true %>
 
     <%= favicon_link_tag asset_path('airplane.png') %>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MQSPYT4F07"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MQSPYT4F07');
+</script>
   </head>
   <body class="flex flex-col items-center bg-gray-100 ">
     <div class="flex justify-center sticky top-0 w-full bg-white shadow-md">
