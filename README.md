@@ -20,10 +20,6 @@ Things you may want to cover:
 - Services (job queues, cache servers, search engines, etc.)
 
 - Deployment instructions
-  flyctl depoly
-  bin/rails generate dockerfile #This allows git to work for gem on github
-
-  docker file add after final state FROM base
-  ARG DEPLOY_PACKAGES="libvips"
+  Deploy to heroku. No additional configuration needed.
 
 - ...
