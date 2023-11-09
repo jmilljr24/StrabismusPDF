@@ -11,7 +11,7 @@
 
     <%= favicon_link_tag asset_path('airplane.png') %>
   </head>
-  <body class="flex flex-col items-center bg-gray-100">
+  <body class="flex flex-col items-center bg-gray-100 ">
     <div class="flex justify-center sticky top-0 w-full bg-white shadow-md">
       <div class="flex justify-between items-center w-full max-w-5xl ">
      
@@ -36,6 +36,15 @@
     
     
   </body>
-  <footer>
+  <footer class='flex absolute justify-center bottom-0 w-full bg-[rgb(80,124,92)] p-3'>
+    <div class="flex w-full max-w-5xl ">
+      <%=link_to image_tag('github-mark.png', size: '40x40'),
+       'https://github.com/jmilljr24/StrabismusPDF' %>
+      <a href="https://github.com/jmilljr24/StrabismusPDF" class="self-center pl-1.5 text-[0.6rem]">Feel free to check out the source<br/>
+           code and offer any suggestions</a>
+
+
+
+    </div>
   </footer>
 </html>
