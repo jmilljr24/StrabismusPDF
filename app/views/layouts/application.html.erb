@@ -8,12 +8,23 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload",
     defer: true %>
-    <%= link_to "Home", root_path, class: "absolute bg-white m-1 top-0 left-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+
+    <%= favicon_link_tag asset_path('airplane.png') %>
+  </head>
+  <body>
+        <%= link_to "Home", root_path, class: "absolute bg-white m-1 top-0 left-0 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    <% flash.each do |type, msg| %>
+<div class="mb-3 inline-flex justify-center w-full items-center rounded-lg bg-primary-100 px-6 py-5 text-base text-primary-700">
+
+  <%= msg %>
+</div>
+    
+    
+  
+<% end %>
     <div class=" absolute top-0 right-0 p-2">
       <script class="shadow-xl" type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="VansRVcolorcode" data-color="#507c5c" data-emoji="🍺"  data-font="Cookie" data-text="Buy me a beer" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
     </div>
-  </head>
-  <body>
     <div class="flex justify-center">
       <%= yield %>
     </div>
