@@ -47,13 +47,22 @@ class ParseController < ApplicationController
     redirect_to parse_show_path(new_file_name: @new_file_name)
   end
 
-  def download
+  def preview
     @new_file_name = params[:new_file_name]
     send_file(
       "#{Rails.root}/public/#{@new_file_name}",
       filename: @new_file_name,
       type: 'application/pdf',
       disposition: 'inline'
+    )
+  end
+
+  def download
+    @new_file_name = params[:new_file_name]
+    send_file(
+      "#{Rails.root}/public/#{@new_file_name}",
+      filename: @new_file_name,
+      type: 'application/pdf'
     )
   end
 end
