@@ -83,6 +83,7 @@ module PartsList # rubocop:disable Metrics/ModuleLength
            'F-1012',
            'F-1012A',
            'F-1012B',
+           'F-1012E',
            'F-1014',
            'F-1028',
            'F-1029',
