@@ -84,3 +84,5 @@ gem 'sentry-rails', '~> 5.12'
 gem 'glib2'
 
 gem 'redis', '~> 5.0'
+
+gem "puma_worker_killer", "~> 0.3.1"
