@@ -1,3 +1,17 @@
+<div class="grid sm:grid-cols-2 gap-10 bg-gray-300 max-w-5xl p-10 sm:mt-5 shadow-md">
+  <div class="grid grid-cols-1">
+    
+    <h1 class='font-bold text-4xl sm:text-3xl p-2 text-gray-800 self-center'>Give Color to Van's Plans</h1>
+    
+    <p class="p-2 text-gray-800">This is a simply utility to highlight each unique part number on a given page
+    and give it a random color. This makes it easy to find the matching part numbers
+    in the text description with the graphical depiction.</p>
+  </div>
+  <div class="shadow-xl">
+    <%= image_tag("adobe-view.png" ) %>
+  </div>
+</div>
+
 <div class="flex justify-center pt-20">
   <%= form_with url: '/parse' , multipart: true do |form| %>
     <div class="flex sm:grid-cols-3 sm:gap-4 ">
@@ -39,10 +53,8 @@ right now. <br> More sections will be added in the near future.</h3>
   <div class="flex flex-col items-center border rounded shadow-md p-5 m-5 max-w-sm">
  
           <%= image_tag("colors.png", size: '300x300' ) %>
-           <p class=" text-gray-600 text-s pt-5">A list of known parts will be
-           highlighted to help match the part number in the text with the part
-           drawing. Each page is scanned and every part on a given page will be
-           given a random color.
+           <p class=" text-gray-600 text-s pt-5">Easily move your eye from the
+           instructions such as <u>Step 5</u>, part number "F-1009" to the graphic.
               </p>
 
   
