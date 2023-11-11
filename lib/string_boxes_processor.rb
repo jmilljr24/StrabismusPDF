@@ -25,6 +25,8 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
 
   def show_text(str)
     @str_boxes[str] = decode_text_with_positioning(str)
+  rescue StandardError
+    puts 'Error parsing file.'
   end
   alias show_text_with_positioning show_text
 
