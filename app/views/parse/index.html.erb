@@ -12,7 +12,12 @@
   </div>
 </div>
 
-<div class="flex justify-center pt-20">
+<div class="flex justify-center sm:justify-end w-full max-w-5xl">
+  <p class="animate-pulse text-red-800 m-4">New Sections Added! Check note below</p>
+
+</div>
+
+<div class="flex justify-center pt-15">
   <%= form_with url: '/parse' , multipart: true do |form| %>
     <div class="flex sm:grid-cols-3 sm:gap-4 ">
       <div class="mt-1 sm:mt-0 sm:col-span-2">
