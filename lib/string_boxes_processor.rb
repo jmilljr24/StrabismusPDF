@@ -32,6 +32,7 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
 
   def match(string_boxes)
     string_boxes.each do |string, value|
+      string = [string] unless string.is_a?(Array)
       begin
         part = string.select.with_index { |_, i| i.even? }.join
       rescue StandardError
@@ -122,11 +123,12 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
   end
 end
 
+## for debugging ##
 # @color_key = {}
 # @prev_page_parts = nil
 
-# doc = HexaPDF::Document.open(ARGV.shift)
-# # doc = HexaPDF::Document.open('06_10.pdf')
+# # doc = HexaPDF::Document.open(ARGV.shift)
+# doc = HexaPDF::Document.open('./lib/26_10.pdf')
 
 # doc.pages.each_with_index do |page, index|
 #   puts "Processing page #{index + 1}"
