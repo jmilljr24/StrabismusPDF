@@ -12,7 +12,7 @@ class ParseController < ApplicationController
     return if uploaded_file.nil?
 
     # errors.add(:pdf, 'is too big. Max 10MB') unless File.size(uploaded_file) <= 10.megabyte
-    unless uploaded_file.content_type == 'application/pdf' && File.size(uploaded_file) < 10.megabyte
+    unless uploaded_file.content_type == 'application/pdf' && File.size(uploaded_file) < 25.megabyte
       p flash.alert = 'Invalid File. Check file type and size.'
       redirect_to root_path
       return
