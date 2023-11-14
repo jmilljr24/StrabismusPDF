@@ -22,8 +22,11 @@
   <body class="flex flex-col items-center bg-gray-100 ">
     <div class="flex justify-center sticky top-0 w-full bg-white shadow-md">
       <div class="flex justify-between items-center w-full max-w-5xl ">
-        <div class="pl-6">
-          <%= image_tag("plane-96.png", size: '60x40' ) %>
+        <div class="flex justify-around">
+          <div class="pl-2 sm:pl-6">
+            <%= image_tag("plane-96.png", size: '60x40' ) %>
+          </div>
+          <h1 class="text-sm sm:text-2xl text-[rgb(80,124,92)] self-center pl-0 sm:pl-4">RV-10</h1>
         </div>
         <div class="flex flex-around items-center ">
           <%= link_to "Home", root_path, class: "text-[rgb(80,124,92)] text-xs
