@@ -127,6 +127,7 @@ GEM
       pkg-config (>= 1.3.5)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -307,6 +308,7 @@ DEPENDENCIES
   error_highlight (>= 0.4.0)
   glib2
   hexapdf!
+  htmlbeautifier (~> 1.4)
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

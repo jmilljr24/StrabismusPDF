@@ -1,3 +1,11 @@
 {
-  "cSpell.enableFiletypes": ["!erb"]
+  "cSpell.enableFiletypes": ["!erb"],
+
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.html.erb": "erb"
+  }
 }
