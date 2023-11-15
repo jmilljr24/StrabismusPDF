@@ -22,10 +22,10 @@ module UserPdfsHelper
         @color_key = processor.color_key
         @prev_page_parts = processor.current_page_parts.uniq
       end
-      @filename = Rails.root.join('tmp', 'Plans_Highlight.pdf').to_s
+      @filename = Rails.root.join('tmp', "colored_#{user_pdf.pdf.filename}").to_s
       doc.write(@filename, optimize: true)
       file = File.open(@filename)
-      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: 'Highlights.pdf')
+      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: "colored_#{user_pdf.pdf.filename}")
     end
   end
 end
