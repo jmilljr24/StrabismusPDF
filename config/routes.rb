@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   get 'preview' => 'parse#preview', as: :preview
 
   # Defines the root path route ("/")
-  # root 'user_pdfs#index'
-  root 'parse#index'
+  root 'user_pdfs#new'
+  # root 'parse#index'
 end
