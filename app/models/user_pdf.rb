@@ -7,7 +7,7 @@ class UserPdf < ApplicationRecord
   def acceptable_pdf
     return unless pdf.attached?
 
-    errors.add(:pdf, 'is too big. Max 10MB') unless pdf.blob.byte_size <= 10.megabyte
+    errors.add(:pdf, 'is too big. Max 70MB') unless pdf.blob.byte_size <= 70.megabyte
 
     return if pdf.content_type.in?(%w[application/pdf])
 
