@@ -7,41 +7,14 @@ class UserPdfsController < ApplicationController
   # GET /user_pdfs or /user_pdfs.json
   def index
     # @user_pdfs = UserPdf.all
-    return unless UserPdf.count > 5
-
-    UserPdf.first.destroy
   end
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
   def show
     colorizer(@user_pdf)
-    # file = ActiveStorage::Blob.last
-    # file.open do |tempfile|
-    #   doc = HexaPDF::Document.open(tempfile.path)
-    #   doc.pages.each_with_index do |page, index|
-    #     puts "Processing page #{index + 1}"
-    #     processor = if index == 0
-    #                   StringBoxesProcessor.new(page)
-    #                 else
-    #                   StringBoxesProcessor.new(page, @color_key)
-    #                 end
-    #     page.process_contents(processor)
-    #     str_boxes = processor.str_boxes
-    #     processor.match(str_boxes)
-    #     page_parts = processor.page_parts
+    return unless UserPdf.count > 5 #increase for production
 
-    #     both_pages = @prev_page_parts & processor.current_page_parts.uniq
-
-    #     processor.assign_color(page_parts, both_pages)
-    #     processor.color(page_parts)
-    #     @color_key = processor.color_key
-    #     @prev_page_parts = processor.current_page_parts.uniq
-    #   end
-    #   @filename = Rails.root.join('tmp', 'Plans_Highlight.pdf').to_s
-    #   doc.write(@filename, optimize: true)
-    #   file = File.open(@filename)
-    #   @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: 'Highlights.pdf')
-    # end
+    UserPdf.first.destroy
   end
 
   # GET /user_pdfs/new
