@@ -8,5 +8,12 @@ hover:bg-gray-400 focus:shadow-outline
 hover:bg-gray-400 focus:shadow-outline
   focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
   </div>
-  <%= link_to "reload", url_for(user_pdf) %>
+  <div class="flex justify-center" >
+    <%= link_to "reload", recolorize_path(id: user_pdf.id), target: '_blank' %>
+    <%# link_to "Click to generate new random
+  colors then check the preview again!", url_for(user_pdf),
+  class: "shadow max-h-fit bg-[rgb(80,124,92)]
+hover:bg-gray-400 focus:shadow-outline
+  focus:outline-none text-white font-bold m-2 mt-6 py-1 px-2 rounded " %>
+  </div>
 </div>
