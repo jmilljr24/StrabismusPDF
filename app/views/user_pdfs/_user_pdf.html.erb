@@ -1,4 +1,11 @@
 <div id="<%= dom_id user_pdf %>">
-  <%=  link_to 'Download file', @blob, download: '', class: "shadow bg-blue-700 hover:bg-blue-400 focus:shadow-outline
-  focus:outline-none text-white font-bold py-2 px-4 rounded max-w-min" %>
+  <div class='flex flex-wrap justify-center gap-2 border-2 p-4 shadow-md mt-10
+ml-10 mr-10 rounded' >
+    <%= link_to "Preview file", @blob, target: "_blank", class: "shadow min-w-max bg-[rgb(80,124,92)]
+hover:bg-gray-400 focus:shadow-outline
+  focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
+    <%= link_to "Download file", rails_blob_path(@blob, disposition: 'attachment'), class: "shadow min-w-max max-h-fit bg-[rgb(80,124,92)]
+hover:bg-gray-400 focus:shadow-outline
+  focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
+  </div>
 </div>
