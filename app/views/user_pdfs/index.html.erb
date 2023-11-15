@@ -6,7 +6,3 @@
 </div>
 <%= link_to "Click here to start an upload", new_user_pdf_path, class: "shadow bg-blue-700 hover:bg-blue-400 focus:shadow-outline
   focus:outline-none text-white font-bold py-2 px-4 rounded max-w-min" %>
-<%= form_with path: parse_file_path , multipart: true do |form| %>
-  <%= file_field_tag :file %>
- <%=  form.submit "form" %>
-<% end %>
