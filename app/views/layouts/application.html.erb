@@ -33,7 +33,7 @@
           <%= link_to "Home", root_path, class: "text-[rgb(80,124,92)] text-xs
       sm:text-base m-2 top-0 hover:text-gray-400 font-semibold py-2 px-2" %>
           <p class ="text-[rgb(80,124,92)]">|</p>
-          <%= link_to "Info", parse_show_path, class: "text-[rgb(80,124,92)] text-xs
+          <%= link_to "Info", information_path, class: "text-[rgb(80,124,92)] text-xs
       sm:text-base m-2
       top-0 hover:text-gray-400 font-semibold py-2 px-2" %>
           <p class ="text-[rgb(80,124,92)]">|</p>
@@ -52,7 +52,8 @@
     <% end %>
     <%= yield %>
   </body>
-  <footer class='flex sticky justify-center bottom-0 w-full bg-[rgb(80,124,92)] p-3'>
+  <footer class='flex sticky bottom-0 justify-center w-full bg-[rgb(80,124,92)]
+  p-3'>
     <div class="flex w-full max-w-5xl ">
       <%=link_to image_tag('github-mark.png', size: '40x40'),
        'https://github.com/jmilljr24/StrabismusPDF' %>
