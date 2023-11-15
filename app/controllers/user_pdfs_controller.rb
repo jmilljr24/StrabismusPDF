@@ -2,7 +2,7 @@
 
 class UserPdfsController < ApplicationController
   include UserPdfsHelper
-  before_action :set_user_pdf, only: %i[show edit update destroy]
+  before_action :set_user_pdf, only: %i[show edit update destroy preview download]
 
   # GET /user_pdfs or /user_pdfs.json
   def index
@@ -12,7 +12,7 @@ class UserPdfsController < ApplicationController
   # GET /user_pdfs/1 or /user_pdfs/1.json
   def show
     colorizer(@user_pdf)
-    return unless UserPdf.count > 5 #increase for production
+    return unless UserPdf.count > 5 # increase for production
 
     UserPdf.first.destroy
   end
@@ -61,6 +61,25 @@ class UserPdfsController < ApplicationController
       format.html { redirect_to user_pdfs_url, notice: 'User pdf was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def preview
+    p @user_pdf = UserPdf.find_by(id: params[:id])
+
+    send_file(
+      @user_pdf.pdf,
+      filename: @user_pdf.pdf.filename,
+      type: 'application/pdf',
+      disposition: 'inline'
+    )
+  end
+
+  def download
+    send_data(
+      @blob,
+      filename: @blob.filename,
+      type: 'application/pdf'
+    )
   end
 
   private
