@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import Dropzone from "dropzone";
-// import { DirectUpload } from "@rails/activestorage";
+import { DirectUpload } from "@rails/activestorage";
 import {
   getMetaValue,
   findElement,
