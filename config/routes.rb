@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'downloads' => 'parse#download', as: :download
   get 'preview' => 'parse#preview', as: :preview
   get 'information' => 'application#information'
-  get 'user_pdfs/:id/color' => 'user_pdfs#recolorize', as: :recolorize
+  get 'user_pdfs/color/:id' => 'user_pdfs#recolorize', as: :recolorize
   # Defines the root path route ("/")
   # root 'user_pdfs#new'
   root 'user_pdfs#index'
