@@ -1,0 +1,6 @@
+   <%#      render turbo_stream: turbo_stream.replace('new_user_pdf', partial: 'user_pdf'),
+locals: { user_pdf: @user_pdf } %>
+<%= turbo_stream.replace 'new_user_pdf' do %>
+  <%= render partial: 'user_pdf', locals: { user_pdf: @user_pdf } %>
+<% end %>
+<%= turbo_stream.remove 'pdf_load_fallback' %>
