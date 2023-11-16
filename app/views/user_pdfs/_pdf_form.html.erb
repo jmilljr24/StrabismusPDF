@@ -1,6 +1,8 @@
 <%= form_with(model: user_pdf) do |form| %>
   <div class="dropzone dropzone-default dz-clickable border-2
-        border-gray-300 border-dashed rounded-md shadow-lg" data-controller="dropzone" data-dropzone-max-files="1" data-dropzone-accepted-files="application/pdf">
+  border-gray-300 border-dashed rounded-md shadow-lg" data-controller="dropzone"
+  data-dropzone-max-files="1" data-dropzone-max-file-size="65"
+  data-dropzone-accepted-files="application/pdf">
     <%= form.file_field :pdf, direct_upload: true, data: { dropzone_target: 'input' } %>
     <div class="dropzone-msg dz-message needsclick flex flex-col justify-around ">
       <h3 class="dropzone-msg-title text-mg text-gray-600 pb-5">Drag here or click to
