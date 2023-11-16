@@ -39,10 +39,7 @@ class UserPdfsController < ApplicationController
     respond_to do |format|
       if @user_pdf.save
         UserPdf.first.destroy if UserPdf.count > 5
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace('new_user_pdf', partial: 'user_pdf'),
-                 locals: { user_pdf: @user_pdf }
-        end
+        format.turbo_stream
         format.html { redirect_to user_pdf_url(@user_pdf) }
         format.json { render :show, status: :created, location: @user_pdf }
       else
