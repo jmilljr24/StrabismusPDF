@@ -2,7 +2,7 @@
 
 class UserPdfsController < ApplicationController
   include UserPdfsHelper
-  before_action :set_user_pdf, only: %i[show edit update destroy recolorize]
+  before_action :set_user_pdf, only: %i[show edit update destroy]
 
   # GET /user_pdfs or /user_pdfs.json
   def index
@@ -13,9 +13,15 @@ class UserPdfsController < ApplicationController
   def show
     colorizer(@user_pdf)
 
-    return unless UserPdf.count > 5 # increase for production
+    UserPdf.first.destroy if UserPdf.count > 5 # increase for production
 
-    UserPdf.first.destroy
+    # respond_to do |format|
+    #   format.turbo_stream do
+    #     render turbo_stream: turbo_stream.replace('downloader',
+    #                                               partial: 'user_pdfs/user_pdf',
+    #                                               locals: { user_pdf: @user_pdf })
+    #   end
+    # end
   end
 
   # GET /user_pdfs/new
@@ -27,11 +33,15 @@ class UserPdfsController < ApplicationController
   def edit; end
 
   # POST /user_pdfs or /user_pdfs.json
-  def create
+  def create # rubocop:disable Metrics
     @user_pdf = UserPdf.new(user_pdf_params)
 
     respond_to do |format|
       if @user_pdf.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('new_user_pdf', partial: 'user_pdf'),
+                 locals: { user_pdf: @user_pdf }
+        end
         format.html { redirect_to user_pdf_url(@user_pdf) }
         format.json { render :show, status: :created, location: @user_pdf }
       else
@@ -65,9 +75,20 @@ class UserPdfsController < ApplicationController
   end
 
   def recolorize
+    @user_pdf = UserPdf.find(params[:id])
     colorizer(@user_pdf)
     send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
                               filename: "#{@blob.filename}"
+    # respond_to do |format|
+    #   format.turbo_stream do
+    #     turbo_stream do
+    #       render turbo_stream: turbo_stream.append('recolorize',
+    #                                                partial: '/user_pdfs/user_pdf',
+    #                                                locals: { user_pdf: @user_pdf })
+    #     end
+    #   end
+    #   format.html { redirect_to user_pdf_url(@user_pdf) }
+    # end
   end
 
   private

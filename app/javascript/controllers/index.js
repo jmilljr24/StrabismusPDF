@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ContentLoaderController from "./content_loader_controller"
+application.register("content-loader", ContentLoaderController)
+
 import DropzoneController from "./dropzone_controller"
 application.register("dropzone", DropzoneController)
 
