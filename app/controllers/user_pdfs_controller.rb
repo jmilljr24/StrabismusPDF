@@ -75,7 +75,7 @@ class UserPdfsController < ApplicationController
     end
   end
 
-  def recolorize
+  def colorize_pdf
     @user_pdf = UserPdf.find(params[:id])
     colorizer(@user_pdf)
     # send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
@@ -84,6 +84,13 @@ class UserPdfsController < ApplicationController
     render turbo_stream: turbo_stream.replace('pdf_load',
                                               partial: '/user_pdfs/downloads',
                                               locals: { user_pdf: @user_pdf })
+  end
+
+  def recolorize
+    @user_pdf = UserPdf.find(params[:id])
+    colorizer(@user_pdf)
+    send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
+                              filename: @blob.filename.to_s
   end
 
   private
