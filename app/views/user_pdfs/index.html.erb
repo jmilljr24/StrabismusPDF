@@ -1,1 +1,51 @@
+<div class="grid sm:grid-cols-2 gap-10 bg-gray-300 max-w-5xl p-10 sm:mt-5 shadow-md">
+  <div class="grid grid-cols-1">
+    <h1 class='font-bold text-4xl sm:text-3xl p-2 text-gray-800 self-center'>Give Color to Van's Plans</h1>
+    <p class="p-2 text-gray-800 pr-10">This is a simple utility to highlight each unique part number on a given page
+      and give it a random color. This makes it easy to find the matching part numbers
+      in the text description with the graphical depiction.</p>
+  </div>
+  <div class="shadow-xl">
+    <%= image_tag("adobe-view.png" ) %>
+  </div>
+</div>
 <%= turbo_frame_tag id="new_user_pdf", src: new_user_pdf_path %>
+<div class='flex justify-center w-full shadow-sm mt-2'>
+  <h2 class="text-gray-600 p-3 text-center ">For best results visit <a
+href="https://www.vansaircraft.com/" target="_blank" class="text-orange-500 underline">Van's Aircraft</a> and download the most
+    recent PDF's</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-6 max-w-5xl p-5">
+  <%= image_tag("small_vansguide.gif", size: '500x500' ) %>
+  <ul class="list-disc">
+    <li>At <a href="https://www.vansaircraft.com/" target="_blank">Vansaircraft.com</a> click on
+      <a href="https://store.vansaircraft.com/" target="_blank"><b>Store</b></a></li>
+    <br>
+    <li>Ensure you are logged into your store account and click the dropdown arrow
+      next to your name.</li>
+    <br>
+    <li>Click on <a href="https://store.vansaircraft.com/aircraft/customer/" target="_blank"><b>My Aircraft</b></a> and a new page will open.</li>
+    <br>
+    <li>Click the link to <b>Download Kit Plans</b>. A list of links to download each
+      section will be available.</li>
+  </ul>
+</div>
+<div class="flex justify-center w-full shadow-sm mt-2" >
+  <h2 class="text-gray-600 p-3">Examples Below</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+  <div class="flex flex-col items-center border rounded shadow-md p-5 m-5 max-w-sm">
+    <%= image_tag("colors.png", size: '300x300' ) %>
+    <p class=" text-gray-600 text-s pt-5">Easily move your eye from the
+      instructions such as <u>Step 5</u>, part number "F-1009" to the graphic.
+    </p>
+  </div>
+  <div class="flex flex-col items-center border rounded shadow-md p-5 m-5 max-w-sm">
+    <%= image_tag("left_right.png", size: '300x300' ) %>
+    <p class=" text-gray-600 text-s pt-5">Left and right parts will
+      be a common color. 
+      All "-L" designations will have a red border 
+      and all "-R" designations will have a green border 
+    </p>
+  </div>
+</div>
