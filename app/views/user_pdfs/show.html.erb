@@ -1,2 +1,4 @@
-<%=render @user_pdf %>
-<%= render 'info' %>
+<%= turbo_frame_tag id="new_user_pdf" do %>
+  <%=render @user_pdf %>
+  <%= render 'info' %>
+<% end %>

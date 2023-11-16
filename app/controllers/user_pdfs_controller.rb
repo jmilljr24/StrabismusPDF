@@ -11,7 +11,7 @@ class UserPdfsController < ApplicationController
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
   def show
-    colorizer(@user_pdf)
+    # colorizer(@user_pdf)
 
     UserPdf.first.destroy if UserPdf.count > 5 # increase for production
 
@@ -38,6 +38,7 @@ class UserPdfsController < ApplicationController
 
     respond_to do |format|
       if @user_pdf.save
+        UserPdf.first.destroy if UserPdf.count > 5
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace('new_user_pdf', partial: 'user_pdf'),
                  locals: { user_pdf: @user_pdf }
@@ -77,18 +78,12 @@ class UserPdfsController < ApplicationController
   def recolorize
     @user_pdf = UserPdf.find(params[:id])
     colorizer(@user_pdf)
-    send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
-                              filename: "#{@blob.filename}"
-    # respond_to do |format|
-    #   format.turbo_stream do
-    #     turbo_stream do
-    #       render turbo_stream: turbo_stream.append('recolorize',
-    #                                                partial: '/user_pdfs/user_pdf',
-    #                                                locals: { user_pdf: @user_pdf })
-    #     end
-    #   end
-    #   format.html { redirect_to user_pdf_url(@user_pdf) }
-    # end
+    # send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
+    #                           filename: @blob.filename.to_s
+
+    render turbo_stream: turbo_stream.replace('pdf_load',
+                                              partial: '/user_pdfs/downloads',
+                                              locals: { user_pdf: @user_pdf })
   end
 
   private
