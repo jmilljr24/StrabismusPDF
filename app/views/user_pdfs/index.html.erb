@@ -9,8 +9,10 @@
     <%= image_tag("adobe-view.png" ) %>
   </div>
 </div>
-<%= turbo_frame_tag id="new_user_pdf", src: new_user_pdf_path %>
-<div class='flex justify-center w-full shadow-sm mt-2'>
+<%= turbo_frame_tag id="new_user_pdf", src: new_user_pdf_path do %>
+  <%= link_to 'Click to start new upload', new_user_pdf_path %>
+<% end %>
+<div class='flex justify-center w-full shadow-sm mt-5'>
   <h2 class="text-gray-600 p-3 text-center ">For best results visit <a
 href="https://www.vansaircraft.com/" target="_blank" class="text-orange-500 underline">Van's Aircraft</a> and download the most
     recent PDF's</h2>
