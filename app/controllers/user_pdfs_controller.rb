@@ -11,9 +11,9 @@ class UserPdfsController < ApplicationController
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
   def show
-    # colorizer(@user_pdf)
+    colorizer(@user_pdf)
 
-    UserPdf.first.destroy if UserPdf.count > 5 # increase for production
+    UserPdf.first.destroy if UserPdf.count > 10 # increase for production
 
     # respond_to do |format|
     #   format.turbo_stream do

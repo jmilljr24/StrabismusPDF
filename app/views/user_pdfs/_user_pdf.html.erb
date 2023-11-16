@@ -18,3 +18,8 @@
     </div>
   </div>
 <% end %>
+<%= turbo_frame_tag id="pdf_load_fallback" do %>
+  <%= link_to "Download file", rails_blob_path(@blob, disposition: 'attachment'), class: "shadow min-w-max max-h-fit bg-[rgb(80,124,92)]
+hover:bg-gray-400 focus:shadow-outline
+  focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
+<% end %>
