@@ -1,25 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails website to process PDF files.
 
-Things you may want to cover:
+Kitplane manufacturer Van's Aircraft provides customers with PDF instructional
+files for building the kit plane. Numerous part numbers are reference between
+the written steps and a graphical representation of the parts being put
+together.
 
-- Ruby version
+This program will find matching parts on a given page add matching highlight
+annotations. It will also remember the color of a given part if it was on the
+previous page. There is only one page lookback due to the large number of parts
+and the limit on number of different colors that are contrasting.
 
-- System dependencies
+The site uses a mix of Tailwind CSS, Turbo Frames/Streams and a PostgreSQL database.
 
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-  Deploy to heroku. No additional configuration needed.
-
-- ...
+Deploy to heroku. No additional configuration needed.
