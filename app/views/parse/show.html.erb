@@ -1,30 +1,24 @@
 <% @new_file_name = params[:new_file_name] %>
 <% if @new_file_name %>
-<div class='flex flex-wrap justify-center gap-2 border-2 p-4 shadow-md mt-10
+  <div class='flex flex-wrap justify-center gap-2 border-2 p-4 shadow-md mt-10
 ml-10 mr-10 rounded' >
-
-
-<%= link_to "Preview file", preview_path(new_file_name:
+    <%= link_to "Preview file", preview_path(new_file_name:
 params[:new_file_name]), target: "_blank", class: "shadow min-w-max bg-[rgb(80,124,92)]
 hover:bg-gray-400 focus:shadow-outline
   focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
-
-
-
-<%= link_to "Download file", download_path(new_file_name:
+    <%= link_to "Download file", download_path(new_file_name:
 params[:new_file_name]), class: "shadow min-w-max max-h-fit bg-[rgb(80,124,92)]
 hover:bg-gray-400 focus:shadow-outline
   focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
-</div>
+  </div>
 <% end %>
-
 <div class="m-5 mt-15 p-5 max-w-xl shadow-lg">
-    <p>Feel free to upload and process your files multiple times to get a new random set of colors
+  <p>Feel free to upload and process your files multiple times to get a new random set of colors
     generated. I tried to add enough colors for the max number of parts per page
     without having colors be too similar. I will continue to add more sections to
     the search function in the future. Files 06_10.pdf through 40_10.pdf should
-    work pretty well with only minor discrepancies <br>
-<br>
+    work pretty well with only minor discrepancies. <br>
+    <br>
     I'm currently working on sections 41-50 however a number of files from
     Van's do not have OCR. This means when you search with your PDF reader for a
     part number or my program searches no text is found. If the part number
@@ -45,5 +39,4 @@ hover:bg-gray-400 focus:shadow-outline
     but in different locations in the build. Other times, It can be more
     important when they are sub-parts being joined together. </p>
 </div>
-
 <div class="min-h-screen"></div>
