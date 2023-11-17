@@ -340,6 +340,8 @@ module PartsList # rubocop:disable Metrics/ModuleLength
            'WD-1014-PC',
            'WD-1014',
            'WD-1014C',
+           'WD-1030',
+           'WD-1031',
 
            'WD-421',
            'W-SPAR ASSY',
@@ -584,6 +586,7 @@ module PartsList # rubocop:disable Metrics/ModuleLength
            'VENT TG-10',
            'VENT TG-1010',
            'VENT-00004',
+           'WD-01001-D1-1',
            'WD-01021',
            'WD-1002',
            'WD-1003',
@@ -597,12 +600,17 @@ module PartsList # rubocop:disable Metrics/ModuleLength
            'WD-1013A',
            'WD-1013B',
            'WD-1013C',
+           'WD-1016-1',
+           'WD-1017-1',
            'WD-1043',
            # #FUEL
            'AN SPACER',
            'AN816-6D',
            'AN818-6D',
+           'AN818-4D',
+           'AN819-4D',
            'AN819-6D',
+           'AN822-4D',
            'AN822-6D',
            'AN826-6D',
            'AN833-4D',
@@ -616,7 +624,18 @@ module PartsList # rubocop:disable Metrics/ModuleLength
            'FLO-SCAN',
            'ES 40108',
            'GMM-4M-675',
-           'BUSH-BS'].freeze
+           'BUSH-BS',
+           'U-00024',
+           'U-00711',
+           'U-00712',
+           'U-01004',
+           'U-01407',
+           'U-1001',
+           'U-1003',
+           'U-1004A',
+           'U-1005',
+           'U-1008-1',
+           'U-1010'].freeze
 
   # file.each { |c| parts << c[0] }
   define_method(:getParts) { parts }
