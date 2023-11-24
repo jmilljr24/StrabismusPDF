@@ -30,7 +30,8 @@ class UserPdfsController < ApplicationController
   end
 
   # GET /user_pdfs/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /user_pdfs or /user_pdfs.json
   def create # rubocop:disable Metrics
@@ -53,7 +54,7 @@ class UserPdfsController < ApplicationController
   def update
     respond_to do |format|
       if @user_pdf.update(user_pdf_params)
-        format.html { redirect_to user_pdf_url(@user_pdf), notice: 'User pdf was successfully updated.' }
+        format.html { redirect_to user_pdf_url(@user_pdf), notice: "User pdf was successfully updated." }
         format.json { render :show, status: :ok, location: @user_pdf }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,7 +68,7 @@ class UserPdfsController < ApplicationController
     @user_pdf.destroy!
 
     respond_to do |format|
-      format.html { redirect_to user_pdfs_url, notice: 'User pdf was successfully destroyed.' }
+      format.html { redirect_to user_pdfs_url, notice: "User pdf was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -78,16 +79,16 @@ class UserPdfsController < ApplicationController
     # send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
     #                           filename: @blob.filename.to_s
 
-    render turbo_stream: turbo_stream.replace('pdf_load',
-                                              partial: '/user_pdfs/downloads',
-                                              locals: { user_pdf: @user_pdf })
+    render turbo_stream: turbo_stream.replace("pdf_load",
+      partial: "/user_pdfs/downloads",
+      locals: {user_pdf: @user_pdf})
   end
 
   def recolorize
     @user_pdf = UserPdf.find(params[:id])
     colorizer(@user_pdf)
-    send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
-                              filename: @blob.filename.to_s
+    send_data @blob.download, type: "application/pdf", disposition: "inline", target: "_blank",
+      filename: @blob.filename.to_s
   end
 
   private
@@ -106,7 +107,7 @@ class UserPdfsController < ApplicationController
     return unless user_pdf_params
 
     begin
-    rescue StandardError
+    rescue
     end
   end
 end
