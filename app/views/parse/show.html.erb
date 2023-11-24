@@ -1,7 +1,7 @@
 <% @new_file_name = params[:new_file_name] %>
 <% if @new_file_name %>
   <div class='flex flex-wrap justify-center gap-2 border-2 p-4 shadow-md mt-10
-ml-10 mr-10 rounded' >
+ml-10 mr-10 rounded'>
     <%= link_to "Preview file", preview_path(new_file_name:
 params[:new_file_name]), target: "_blank", class: "shadow min-w-max bg-[rgb(80,124,92)]
 hover:bg-gray-400 focus:shadow-outline

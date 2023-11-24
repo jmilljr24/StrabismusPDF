@@ -17,7 +17,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload",
     defer: true %>
-    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css">
     <%= favicon_link_tag asset_path('airplane.png') %>
   </head>
   <body class="flex flex-col items-center bg-gray-100 ">
@@ -32,14 +32,14 @@
         <div class="flex flex-around items-center ">
           <%= link_to "Home", root_path, class: "text-[rgb(80,124,92)] text-xs
       sm:text-base m-2 top-0 hover:text-gray-400 font-semibold py-2 px-2" %>
-          <p class ="text-[rgb(80,124,92)]">|</p>
+          <p class="text-[rgb(80,124,92)]">|</p>
           <%= link_to "Info", information_path, class: "text-[rgb(80,124,92)] text-xs
       sm:text-base m-2
       top-0 hover:text-gray-400 font-semibold py-2 px-2" %>
-          <p class ="text-[rgb(80,124,92)]">|</p>
+          <p class="text-[rgb(80,124,92)]">|</p>
           <a href="https://www.buymeacoffee.com/vansrvcolorcode" class=" text-xs
       sm:text-base top-0
-         m-2 p-2 
+         m-2 p-2
         hover:text-gray-400
          text-[rgb(80,124,92)] font-semibold min-w-fit"> &#127866; Buy me a beer</a>
         </div>
@@ -55,9 +55,9 @@
   <footer class='flex sticky bottom-0 justify-center w-full bg-[rgb(80,124,92)]
   p-3'>
     <div class="flex w-full max-w-5xl ">
-      <%=link_to image_tag('github-mark.png', size: '40x40'),
+      <%= link_to image_tag('github-mark.png', size: '40x40'),
        'https://github.com/jmilljr24/StrabismusPDF' %>
-      <a href="https://github.com/jmilljr24/StrabismusPDF" class="self-center pl-1.5 text-[0.6rem]">Feel free to check out the source<br/>
+      <a href="https://github.com/jmilljr24/StrabismusPDF" class="self-center pl-1.5 text-[0.6rem]">Feel free to check out the source<br>
         code and offer any suggestions</a>
     </div>
   </footer>

@@ -6,10 +6,10 @@ module UserPdfsHelper
       doc.pages.each_with_index do |page, index|
         puts "Processing page #{index + 1}"
         processor = if index == 0
-                      StringBoxesProcessor.new(page)
-                    else
-                      StringBoxesProcessor.new(page, @color_key)
-                    end
+          StringBoxesProcessor.new(page)
+        else
+          StringBoxesProcessor.new(page, @color_key)
+        end
         page.process_contents(processor)
         str_boxes = processor.str_boxes
         processor.match(str_boxes)
@@ -22,7 +22,7 @@ module UserPdfsHelper
         @color_key = processor.color_key
         @prev_page_parts = processor.current_page_parts.uniq
       end
-      @filename = Rails.root.join('tmp', "colored_#{user_pdf.pdf.filename}").to_s
+      @filename = Rails.root.join("tmp", "colored_#{user_pdf.pdf.filename}").to_s
       doc.write(@filename, optimize: true)
       file = File.open(@filename)
       @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: "colored_#{user_pdf.pdf.filename}")

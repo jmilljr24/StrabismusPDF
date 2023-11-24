@@ -1,5 +1,5 @@
-require 'hexapdf'
-require_relative 'parts_list'
+require "hexapdf"
+require_relative "parts_list"
 # Usage:
 # : `ruby string_boxes.rb INPUT.PDF`
 #
@@ -14,7 +14,7 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
     @canvas = page.canvas(type: :overlay)
 
     @colors = %w[cyan deeppink olivedrab blue darkgreen dimgrey mediumspringgreen steelblue blueviolet orangered darkorange darksalmon darkslateblue lime tomato springgreen
-                 darkgoldenrod magenta crimson maroon]
+      darkgoldenrod magenta crimson maroon]
     @used_colors = []
     @parts = getParts
     @str_boxes = {}
@@ -25,17 +25,17 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
 
   def show_text(str)
     @str_boxes[str] = decode_text_with_positioning(str)
-  rescue StandardError
-    puts 'Error parsing file.'
+  rescue
+    puts "Error parsing file."
   end
-  alias show_text_with_positioning show_text
+  alias_method :show_text_with_positioning, :show_text
 
   def match(string_boxes)
     string_boxes.each do |string, value|
       string = [string] unless string.is_a?(Array)
       begin
         part = string.select.with_index { |_, i| i.even? }.join
-      rescue StandardError
+      rescue
         nil
       end
 
@@ -55,21 +55,21 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
         end
       end
 
-      left_part = part&.enum_for(:match, '-L')&.map { Regexp.last_match.begin(0) }
+      left_part = part&.enum_for(:match, "-L")&.map { Regexp.last_match.begin(0) }
       left_part&.each do |pos|
         boxes = value.cut(pos, (pos + 2))
         @canvas.line_width = 2.0
         @canvas.stroke_color(150, 20, 20)
         @canvas.polyline(*boxes[0].lower_left, *boxes[1].lower_right,
-                         *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
+          *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
       end
-      right_part = part&.enum_for(:match, '-R')&.map { Regexp.last_match.begin(0) }
+      right_part = part&.enum_for(:match, "-R")&.map { Regexp.last_match.begin(0) }
       right_part&.each do |pos|
         boxes = value.cut(pos, (pos + 2))
         @canvas.line_width = 2.0
         @canvas.stroke_color(30, 100, 30)
         @canvas.polyline(*boxes[0].lower_left, *boxes[1].lower_right,
-                         *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
+          *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
       end
     end
   end
@@ -112,9 +112,9 @@ class StringBoxesProcessor < HexaPDF::Content::Processor
             c.each do |box|
               x, y = *box.lower_left
               tx, ty = *box.upper_right
-              color = @color_key.dig(a[0]).nil? ? 'yellow' : @color_key.dig(a[0])
+              color = @color_key.dig(a[0]).nil? ? "yellow" : @color_key.dig(a[0])
               @canvas.fill_color(color).opacity(fill_alpha: 0.4)
-                     .rectangle(x, y, tx - x, ty - y).fill
+                .rectangle(x, y, tx - x, ty - y).fill
             end
           end
         end

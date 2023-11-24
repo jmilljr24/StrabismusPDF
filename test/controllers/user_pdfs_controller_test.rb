@@ -17,7 +17,7 @@ class UserPdfsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user_pdf" do
     assert_difference("UserPdf.count") do
-      post user_pdfs_url, params: { user_pdf: {  } }
+      post user_pdfs_url, params: {user_pdf: {}}
     end
 
     assert_redirected_to user_pdf_url(UserPdf.last)
@@ -34,7 +34,7 @@ class UserPdfsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user_pdf" do
-    patch user_pdf_url(@user_pdf), params: { user_pdf: {  } }
+    patch user_pdf_url(@user_pdf), params: {user_pdf: {}}
     assert_redirected_to user_pdf_url(@user_pdf)
   end
 
