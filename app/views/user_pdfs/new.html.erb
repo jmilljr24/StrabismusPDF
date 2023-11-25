@@ -1,11 +1,9 @@
 <%= turbo_frame_tag id="new_user_pdf" do %>
-  <div class="flex justify-center sm:justify-end w-full max-w-5xl">
-    <p class=" text-red-800 m-4">New Sections Added! Check note below</p>
-  </div>
   <%# Drag and drop upload form %>
   <%= render "pdf_form", user_pdf: @user_pdf %>
   <%#PDf information %>
-  <h3 class="text-[0.8rem] w-72 text-center">*Please note: Only Sections 6 through 40 of the RV-10 will work as of
-    right now. More sections will be added in the near future. Check info page for
-    futher details</h3>
+  <div class="flex justify-center w-full max-w-5xl p-5">
+    <%= link_to '*Click here for list of files with known issues*',
+    files_info_path, class: 'hover:text-red-500', data: { turbo_frame: "_top" } %>
+  </div>
 <% end %>
