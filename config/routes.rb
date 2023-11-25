@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "downloads" => "parse#download", :as => :download
   get "preview" => "parse#preview", :as => :preview
   get "information" => "application#information"
+  get "files/info" => "application#files_info", :as => :files_info
   get "user_pdfs/color/:id" => "user_pdfs#colorize_pdf", :as => :colorize_pdf
   get "user_pdfs/recolor/:id" => "user_pdfs#recolorize", :as => :recolorize
 
