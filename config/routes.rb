@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   resources :user_pdfs
   # resources :parse
@@ -18,4 +20,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root 'user_pdfs#new'
   root "user_pdfs#index"
+
+  # mount Sidekiq::Web in your Rails app
+  mount Sidekiq::Web => "/sidekiq"
 end

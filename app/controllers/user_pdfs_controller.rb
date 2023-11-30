@@ -11,7 +11,7 @@ class UserPdfsController < ApplicationController
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
   def show
-    colorizer(@user_pdf)
+    # colorizer(@user_pdf)
 
     UserPdf.first.destroy if UserPdf.count > 10 # increase for production
 
@@ -36,7 +36,6 @@ class UserPdfsController < ApplicationController
   # POST /user_pdfs or /user_pdfs.json
   def create # rubocop:disable Metrics
     @user_pdf = UserPdf.new(user_pdf_params)
-
     respond_to do |format|
       if @user_pdf.save
         UserPdf.first.destroy if UserPdf.count > 5
@@ -75,12 +74,13 @@ class UserPdfsController < ApplicationController
 
   def colorize_pdf
     @user_pdf = UserPdf.find(params[:id])
-    colorizer(@user_pdf)
+    PdfHighlightJob.perform_later(@user_pdf.id)
+    # colorizer(@user_pdf)
     # send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
     #                           filename: @blob.filename.to_s
 
     render turbo_stream: turbo_stream.replace("pdf_load",
-      partial: "/user_pdfs/downloads",
+      partial: "/user_pdfs/loading",
       locals: {user_pdf: @user_pdf})
   end
 

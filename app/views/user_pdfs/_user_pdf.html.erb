@@ -1,23 +1,10 @@
 <%= turbo_frame_tag id="pdf_load", src: colorize_pdf_path(id: @user_pdf.id) do %>
-  <div class="m-20">
-    <div
-    class="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-    role="status">
-      <span
-      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-    </div>
-    <div
-    class="inline-block h-12 w-12 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
-    role="status">
-      <span
-      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-    </div>
-  </div>
+  <%= render 'loading' %>
 <% end %>
 <%= turbo_frame_tag id="pdf_load_fallback" do %>
   <% if @blob %>
     <%= link_to "Download file", rails_blob_path(@blob, disposition: 'attachment'), class: "shadow min-w-max max-h-fit bg-[rgb(80,124,92)]
-hover:bg-gray-400 focus:shadow-outline
-  focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
+  hover:bg-gray-400 focus:shadow-outline
+    focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
   <% end %>
 <% end %>

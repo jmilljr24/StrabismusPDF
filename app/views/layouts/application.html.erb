@@ -21,6 +21,7 @@
     <%= favicon_link_tag asset_path('airplane.png') %>
   </head>
   <body class="flex flex-col items-center bg-gray-100 ">
+    <%= turbo_stream_from "processing_pdf" %>
     <div class="flex justify-center sticky top-0 w-full bg-white shadow-md">
       <div class="flex justify-between items-center w-full max-w-5xl ">
         <div class="flex justify-around">

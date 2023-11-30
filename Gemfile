@@ -92,3 +92,5 @@ gem "htmlbeautifier", "~> 1.4"
 gem "standard", "~> 1.32"
 
 gem "erb_lint", "~> 0.5.0"
+
+gem "sidekiq", "~> 7.2"
