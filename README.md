@@ -15,7 +15,4 @@ and the limit on number of different colors that are contrasting.
 The site uses a mix of Tailwind CSS, Turbo Frames/Streams and a PostgreSQL
 database.
 
-To try out the site, download 27_10.pdf from the lib folder and use on the site
-to see and example of the output.
-
 Deploy to heroku. No additional configuration needed.
