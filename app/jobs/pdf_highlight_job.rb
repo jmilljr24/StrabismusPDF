@@ -16,7 +16,7 @@ class PdfHighlightJob < ApplicationJob
       }
   end
 
-  def colorizer(user_pdf) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  def colorizer(user_pdf) # rubocop:disable Metrics/AbcSize
     current_pdf = UserPdf.find(user_pdf)
     file = current_pdf.pdf.blob
     file.open do |tempfile|

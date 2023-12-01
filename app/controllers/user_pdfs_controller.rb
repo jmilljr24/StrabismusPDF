@@ -1,7 +1,4 @@
-# require_relative '.../app/string_boxes_processor'
-
 class UserPdfsController < ApplicationController
-  include UserPdfsHelper
   before_action :set_user_pdf, only: %i[show edit update destroy]
 
   # GET /user_pdfs or /user_pdfs.json
