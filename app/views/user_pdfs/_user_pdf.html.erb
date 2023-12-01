@@ -1,3 +1,4 @@
+<%= turbo_stream_from ["processing_pdf", @user_pdf.id] %>
 <%= turbo_frame_tag id="pdf_load", src: colorize_pdf_path(id: @user_pdf.id) do %>
   <%= render 'loading' %>
 <% end %>

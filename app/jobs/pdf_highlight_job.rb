@@ -7,7 +7,7 @@ class PdfHighlightJob < ApplicationJob
     puts "Running background job with user id: #{user_id}"
     colorizer(user_id)
     @blob.inspect
-    Turbo::StreamsChannel.broadcast_replace_to ["processing_pdf"],
+    Turbo::StreamsChannel.broadcast_replace_to ["processing_pdf", user_id].join(":"),
       target: "processing",
       partial: "/user_pdfs/downloads",
       locals: {
