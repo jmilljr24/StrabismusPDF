@@ -1,6 +1,7 @@
 module UserPdfsHelper
   def colorizer(user_pdf) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-    file = user_pdf.pdf.blob
+    current_pdf = UserPdf.find(user_pdf)
+    file = current_pdf.pdf.blob
     file.open do |tempfile|
       doc = HexaPDF::Document.open(tempfile.path)
       doc.pages.each_with_index do |page, index|
@@ -22,10 +23,11 @@ module UserPdfsHelper
         @color_key = processor.color_key
         @prev_page_parts = processor.current_page_parts.uniq
       end
-      @filename = Rails.root.join("tmp", "colored_#{user_pdf.pdf.filename}").to_s
+      @filename = Rails.root.join("tmp", "colored_#{current_pdf.pdf.filename}").to_s
       doc.write(@filename, optimize: true)
       file = File.open(@filename)
-      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: "colored_#{user_pdf.pdf.filename}")
+      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: "colored_#{current_pdf.pdf.filename}")
+      return @blob.id
     end
   end
 end

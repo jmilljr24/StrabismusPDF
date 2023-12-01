@@ -3,33 +3,31 @@
     <%# link_to 'Start New Upload', new_user_pdf_path, class: "self-center -mt-8 mb-20
     py-2 px-4 text-[rgb(80,124,92)] text-xs
         sm:text-base hover:text-gray-400 font-semibold border rounded", data: { turbo_frame: "new_user_pdf"} %>
-    <% if @blob %>
-      <div>
-        <div class='flex flex-col justify-center gap-5 border-2 p-4 shadow-md sm:mt-10
+    <div>
+      <div class='flex flex-col justify-center gap-5 border-2 p-4 shadow-md sm:mt-10
         ml-10 mr-10 rounded'>
-          <div class="flex gap-4 justify-center">
-            <%= link_to "Preview file", @blob, target: "_blank", class: "shadow min-w-max bg-[rgb(80,124,92)]
+        <div class="flex gap-4 justify-center">
+          <%= link_to "Preview file", pdf_blob, target: "_blank", class: "shadow min-w-max bg-[rgb(80,124,92)]
                   hover:bg-gray-400 focus:shadow-outline
                   focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
-            <%= link_to "Download file", rails_blob_path(@blob, disposition: 'attachment'), class: "shadow min-w-max max-h-fit bg-[rgb(80,124,92)]
+          <%= link_to "Download file", rails_blob_path(pdf_blob, disposition: 'attachment'), class: "shadow min-w-max max-h-fit bg-[rgb(80,124,92)]
                   hover:bg-gray-400 focus:shadow-outline
                   focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
-          </div>
-          <%= link_to 'Start New Upload', new_user_pdf_path, class: " self-center
+        </div>
+        <%= link_to 'Start New Upload', new_user_pdf_path, class: " self-center
     py-2 px-4 text-[rgb(80,124,92)] text-xs
         sm:text-base hover:text-gray-400 font-semibold border rounded", data: { turbo_frame: "new_user_pdf"} %>
-        </div>
-        <div class="flex flex-around mt-8">
-          <div class="flex flex-col   bg-gray-300 py-2 px-4 gap-2 m-2 hover:bg-gray-400
+      </div>
+      <div class="flex flex-around mt-8">
+        <div class="flex flex-col   bg-gray-300 py-2 px-4 gap-2 m-2 hover:bg-gray-400
            rounded-md">
-            <%= link_to "Click here to generate a new set of random colors!",
+          <%= link_to "Click here to generate a new set of random colors!",
             recolorize_path(id: user_pdf.id), target: '_blank', class: "
            self-center
               focus:outline-none text-gray-900 font-bold text-center " %>
-            <p class="self-center text-gray-900 text-sm">(New preview tab will open)</p>
-          </div>
+          <p class="self-center text-gray-900 text-sm">(New preview tab will open)</p>
         </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div>
