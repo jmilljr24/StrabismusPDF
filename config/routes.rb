@@ -1,6 +1,6 @@
-require "sidekiq/web"
-
 Rails.application.routes.draw do
+  require "sidekiq/web"
+
   resources :user_pdfs
   # resources :parse
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
