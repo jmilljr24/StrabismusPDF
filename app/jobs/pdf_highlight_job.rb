@@ -5,9 +5,9 @@ class PdfHighlightJob < ApplicationJob
 
   def perform(user_id) # rubocop:disable Metrics/
     # uploaded_file = UserPdf.find(user_id)
-    @blob = python_color
+    python_color
 
-    puts "Running background job with user id: #{user_id}"
+    puts "Running background job with blob id:  "
     # colorizer(user_id)
     # @blob.inspect
     # Turbo::StreamsChannel.broadcast_replace_to ["processing_pdf", user_id].join(":"),
@@ -42,6 +42,7 @@ class PdfHighlightJob < ApplicationJob
         pdf_blob: @blob,
         user_pdf: user_pdf
       }
+    PurgeJob.set(wait: 1.hour).perform_later(@blob.id, user_pdf.pdf.id)
   end
 
   private
