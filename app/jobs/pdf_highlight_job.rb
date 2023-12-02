@@ -42,7 +42,7 @@ class PdfHighlightJob < ApplicationJob
         pdf_blob: @blob,
         user_pdf: user_pdf
       }
-    PurgeJob.set(wait: 1.hour).perform_later(@blob.id, user_pdf.pdf.id)
+    PurgeJob.set(wait: 2.hours).perform_later(@blob.id, user_pdf.id)
   end
 
   private

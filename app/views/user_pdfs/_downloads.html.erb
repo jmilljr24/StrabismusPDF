@@ -14,9 +14,11 @@
                   hover:bg-gray-400 focus:shadow-outline
                   focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
         </div>
-        <%= link_to 'Start New Upload', new_user_pdf_path, class: " self-center
+        <%= link_to 'Start New Upload', root_path, class: " self-center
     py-2 px-4 text-[rgb(80,124,92)] text-xs
-        sm:text-base hover:text-gray-400 font-semibold border rounded", data: { turbo_frame: "new_user_pdf"} %>
+        sm:text-base hover:text-gray-400 font-semibold border rounded", data: {
+        turbo_frame: "_top"} %>
+        <%#Change back to turbo_frame: "new_user_path" after increasing blob capitcy%>
       </div>
       <%
 =begin  %>

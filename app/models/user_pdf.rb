@@ -1,5 +1,5 @@
 class UserPdf < ApplicationRecord
-  has_one_attached :pdf, dependent: :destroy
+  has_one_attached :pdf
   validate :acceptable_pdf
 
   private
