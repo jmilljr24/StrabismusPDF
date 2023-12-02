@@ -69,7 +69,7 @@ output_buffer = BytesIO()
 for pg in range(pdfDoc.page_count):
     # Select the page
     page = pdfDoc[pg]
-
+    print( "Processing page " + str(pg + 1))
     page_lines = page.get_text("text").split('\n')
     for line in page_lines:
         left_result = re.findall("-L", line)
@@ -83,8 +83,8 @@ for pg in range(pdfDoc.page_count):
     words = page.get_text("words")
     matches = [w for w in words if parts_re.findall(w[4])]
 
-    for m in matches:
-        print(m[4])
+    # for m in matches:
+    #     print(m[4])
     
     count += len(matches)
 
