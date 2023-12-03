@@ -89,6 +89,7 @@ output_buffer = BytesIO()
 for pg in range(pdfDoc.page_count):
     print('Page: ' + str(pg + 1))
     # Select the page
+
     page = pdfDoc[pg]
 
     page_lines = page.get_text("text").split('\n')
@@ -113,22 +114,28 @@ for pg in range(pdfDoc.page_count):
     uniq_parts = 0
     base_set = uniq[0]
     s = sorted(base_set)
+
     contains_highlight = set()
+    contains_highlight.clear()
     for part_num in reversed(s):
   
         uniq_parts += colorize(part_num)
         matching_val_area = page.search_for(part_num, quads=True)
-
+        point = None
+        set_positions = list()
         for quad in range(len(matching_val_area)):
             llx = math.trunc(matching_val_area[quad].ll[0])
             lly = math.trunc(matching_val_area[quad].ll[1])
-        point = frozenset([llx, lly])
-        if point not in contains_highlight:
-            highlight = None
-            highlight = page.add_highlight_annot(matching_val_area)
-            highlight.set_colors(stroke= fitz.utils.getColor(color_dict[part_num]))
-            highlight.update(opacity= 0.5)
-            contains_highlight.add(point)
+            point = frozenset([llx, lly])
+            if point not in contains_highlight:
+                position = fitz.Quad(matching_val_area[quad])
+                set_positions.append(position)
+                contains_highlight.add(point)
+
+        highlight = None
+        highlight = page.add_highlight_annot(set_positions)
+        highlight.set_colors(stroke= fitz.utils.getColor(color_dict[part_num]))
+        highlight.update(opacity= 0.5)
 
 print(str(count) + ' Matches found')
 # Save to output

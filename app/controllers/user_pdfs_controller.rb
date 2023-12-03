@@ -10,7 +10,7 @@ class UserPdfsController < ApplicationController
   def show
     # colorizer(@user_pdf)
 
-    UserPdf.first.destroy if UserPdf.count > 10 # increase for production
+    # UserPdf.first.destroy if UserPdf.count > 10 # increase for production
 
     # respond_to do |format|
     #   format.turbo_stream do
@@ -35,7 +35,7 @@ class UserPdfsController < ApplicationController
     @user_pdf = UserPdf.new(user_pdf_params)
     respond_to do |format|
       if @user_pdf.save
-        UserPdf.first.destroy if UserPdf.count > 5
+        # UserPdf.first.destroy if UserPdf.count > 5
         format.turbo_stream
         format.html { redirect_to user_pdf_url(@user_pdf) }
         format.json { render :show, status: :created, location: @user_pdf }

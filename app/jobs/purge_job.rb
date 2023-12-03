@@ -5,7 +5,7 @@ class PurgeJob < ApplicationJob
     # Do something later
     blob.purge
     user.pdf.purge
-    user.destroy
+    user.destroy!
   end
 
   private
