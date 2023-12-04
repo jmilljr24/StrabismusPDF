@@ -39,4 +39,4 @@
 
 /node_modules
 
-*.pdf
+/public/*.pdf
