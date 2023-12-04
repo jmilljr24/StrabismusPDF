@@ -11,7 +11,8 @@ class UserPdfsController < ApplicationController
 
   # GET /user_pdfs/1 or /user_pdfs/1.json
   def show
-    colorizer(@user_pdf)
+    # colorizer(@user_pdf)
+    python_color(@user_pdf)
 
     UserPdf.first.destroy if UserPdf.count > 10 # increase for production
 
@@ -75,7 +76,8 @@ class UserPdfsController < ApplicationController
 
   def colorize_pdf
     @user_pdf = UserPdf.find(params[:id])
-    colorizer(@user_pdf)
+    # colorizer(@user_pdf)
+    python_color(@user_pdf)
     # send_data @blob.download, type: 'application/pdf', disposition: 'inline', target: '_blank',
     #                           filename: @blob.filename.to_s
 
@@ -86,7 +88,8 @@ class UserPdfsController < ApplicationController
 
   def recolorize
     @user_pdf = UserPdf.find(params[:id])
-    colorizer(@user_pdf)
+    # colorizer(@user_pdf)
+    python_color(@user_pdf)
     send_data @blob.download, type: "application/pdf", disposition: "inline", target: "_blank",
       filename: @blob.filename.to_s
   end
