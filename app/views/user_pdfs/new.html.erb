@@ -2,7 +2,7 @@
   <%# Drag and drop upload form %>
   <%= render "pdf_form", user_pdf: @user_pdf %>
   <%#PDf information %>
-  <div class="flex justify-center w-full max-w-5xl p-5">
+  <div class="flex justify-center w-full max-w-5xl p-5 dark:text-gray-600">
     <%= link_to '*Click here for list of files with known issues*',
     files_info_path, class: 'hover:text-red-500', data: { turbo_frame: "_top" } %>
   </div>

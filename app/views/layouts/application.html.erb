@@ -20,15 +20,15 @@
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css">
     <%= favicon_link_tag asset_path('airplane.png') %>
   </head>
-  <body class="flex flex-col items-center bg-gray-100 ">
-    <div class="flex justify-center sticky top-0 w-full bg-white shadow-md">
+  <body class="flex flex-col items-center bg-gray-100 dark:bg-zinc-800 ">
+    <div class="flex justify-center sticky top-0 w-full bg-white dark:bg-zinc-800 shadow-md">
       <div class="flex justify-between items-center w-full max-w-5xl ">
         <div class="flex justify-around">
           <div class="pl-2 sm:pl-6">
             <%= image_tag("plane-96.png", size: '60x40' ) %>
           </div>
         </div>
-        <div class="flex flex-around items-center ">
+        <div class="flex flex-around items-center">
           <%= link_to "Home", root_path, class: "text-[rgb(80,124,92)] text-xs
       sm:text-base m-2 top-0 hover:text-gray-400 font-semibold py-2 px-2" %>
           <p class="text-[rgb(80,124,92)]">|</p>
