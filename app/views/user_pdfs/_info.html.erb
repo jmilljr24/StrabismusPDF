@@ -1,8 +1,125 @@
-<div class="m-5 mt-15 p-5 max-w-xl shadow-lg">
-  <p class="dark:text-zinc-500">The background program that parses the files is
+<div class="m-5 mt-15 p-5 max-w-4xl shadow-lg">
+  <h1 class="text-xl font-bold dark:text-zinc-500">About</h1>
+  <br>
+  <p class="text-lg dark:text-zinc-500">The background program that parses the files is
     written in python. If you prefer to run it locally from the command line or
     wish to make personal changes, you can find the script in my github repo <a class="underline
-  text-[rgb(80,124,92)]" href="https://github.com/jmilljr24/HighlightParts">HighlightParts</a>
+  text-[rgb(80,124,92)]"
+  href="https://github.com/jmilljr24/HighlightParts">HighlightParts</a>
+    <br>
+    <br>
+    Running it locally allows you to set the output file name or batch process all
+    files in a folder.  
   </p>
+</div>
+<div class="m-5 mt-15 p-5 max-w-4xl shadow-lg">
+  <h1 class="text-xl font-bold dark:text-zinc-500">How to run locally:</h1>
+  <br>
+  <ul class="list-disc p-4">
+    <li class="text-lg dark:text-zinc-500">Follow an online guide for installing Python3 to
+      your system (Linux, Windows, macOS)  </li>
+    <li class="text-lg dark:text-zinc-500">If you have any issues with the next steps
+      please visit <a class="underline
+  text-[rgb(80,124,92)]"
+    href="https://packaging.python.org/en/latest/tutorials/installing-packages/">python.org</a>
+      for beginner guides and tutorials</li>
+    <li class="text-lg dark:text-zinc-500">Run the following from the command line to
+      install required packages</li>
+    <br>
+    <span class="bg-gray-200 dark:bg-gray-500 flex gap-5 items-center justify-between max-w-xl py-3 px-5 rounded-full">
+      <code class="text-gray-900 text-left whitespace-nowrap overflow-hidden overflow-ellipsis">
+        pip install pymupdf
+      </code>
+      <span class="text-gray-900">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+          <path
+                d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z"
+                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+      </span>
+    </span>
+    <br>
+    <li class="text-lg dark:text-zinc-500">Go to the Github repo <a class="underline
+  text-[rgb(80,124,92)]"
+    href="https://github.com/jmilljr24/HighlightParts/blob/main/highlight.py">
+        HighlightParts</a>
+    </li>
+    <li class="text-lg dark:text-zinc-500">Click the download button to download highlight.py</li>
+    <li class="text-lg dark:text-zinc-500">To run the python program you have to specify
+      the directory of the pdf file or a folder containing multiple pdfs. The easiest way to do this is to place the
+      highlight.py file in the same folder as your pdf file you wish to highlight</li>
+    <li class="text-lg dark:text-zinc-500">For example on linux, if your pdf file and highlight.py
+      are in your Downloads folder, move into your downloads folder using the cd
+      command</li>
+    <br>
+    <span class="bg-gray-200 dark:bg-gray-500 flex gap-5 items-center justify-between max-w-xl py-3 px-5 rounded-full">
+      <code class="text-gray-900 text-left whitespace-nowrap overflow-hidden overflow-ellipsis">
+        cd Downloads/
+      </code>
+      <span class="text-gray-900">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+          <path
+                d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z"
+                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+      </span>
+    </span>
+    <br>
+    <li class="text-lg dark:text-zinc-500">To process a single file and use the default
+      ouput file name run the following (replace test.pdf with the name of your
+      pdf, example: 06_10.pdf)</li>
+    <br>
+    <span class="bg-gray-200 dark:bg-gray-500 flex gap-5 items-center justify-between max-w-xl py-3 px-5 rounded-full">
+      <code class="text-gray-900 text-left whitespace-nowrap overflow-hidden overflow-ellipsis">
+        python3 highlighting.py test.pdf
+      </code>
+      <span class="text-gray-900">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+          <path
+                d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z"
+                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+      </span>
+    </span>
+    <br>
+    <li class="text-lg dark:text-zinc-500">To change the output file name use the -o
+      option</li>
+    <br>
+    <span class="bg-gray-200 dark:bg-gray-500 flex gap-5 items-center justify-between max-w-xl py-3 px-5 rounded-full">
+      <code class="text-gray-900 text-left whitespace-nowrap overflow-hidden overflow-ellipsis">
+        python3 highlighting.py test.pdf -o my_new_file.pdf
+      </code>
+      <span class="text-gray-900">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+          <path
+                d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z"
+                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+      </span>
+    </span>
+    <br>
+    <li class="text-lg dark:text-zinc-500">To process a folder with multiple files,
+      pass in the folder name
+    </li>
+    <br>
+    <span class="bg-gray-200 dark:bg-gray-500 flex gap-5 items-center justify-between max-w-xl py-3 px-5 rounded-full">
+      <code class="text-gray-900 text-left whitespace-nowrap overflow-hidden overflow-ellipsis">
+        python3 highlighting.py fuselage_folder/
+      </code>
+      <span class="text-gray-900">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+          <path
+                d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z"
+                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+      </span>
+    </span>
+    <br>
+  </ul>
 </div>
 <div class="min-h-screen"></div>
