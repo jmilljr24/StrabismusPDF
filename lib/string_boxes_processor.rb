@@ -1,127 +1,127 @@
-require "hexapdf"
-require_relative "parts_list"
-# Usage:
-# : `ruby string_boxes.rb INPUT.PDF`
-#
+# # require "hexapdf"
+# # require_relative "parts_list"
+# # Usage:
+# # : `ruby string_boxes.rb INPUT.PDF`
+# #
 
-class StringBoxesProcessor < HexaPDF::Content::Processor
-  include PartsList
+# class StringBoxesProcessor < HexaPDF::Content::Processor
+#   include PartsList
 
-  attr_accessor :page_parts, :text_box_parts, :str_boxes, :used_colors, :current_page_parts, :color_key
+#   attr_accessor :page_parts, :text_box_parts, :str_boxes, :used_colors, :current_page_parts, :color_key
 
-  def initialize(page, color_key = {})
-    super()
-    @canvas = page.canvas(type: :overlay)
+#   def initialize(page, color_key = {})
+#     super()
+#     @canvas = page.canvas(type: :overlay)
 
-    @colors = %w[cyan deeppink olivedrab blue darkgreen dimgrey mediumspringgreen steelblue blueviolet orangered darkorange darksalmon darkslateblue lime tomato springgreen
-      darkgoldenrod magenta crimson maroon]
-    @used_colors = []
-    @parts = getParts
-    @str_boxes = {}
-    @page_parts = {}
-    @color_key = color_key
-    @current_page_parts = []
-  end
+#     @colors = %w[cyan deeppink olivedrab blue darkgreen dimgrey mediumspringgreen steelblue blueviolet orangered darkorange darksalmon darkslateblue lime tomato springgreen
+#       darkgoldenrod magenta crimson maroon]
+#     @used_colors = []
+#     @parts = getParts
+#     @str_boxes = {}
+#     @page_parts = {}
+#     @color_key = color_key
+#     @current_page_parts = []
+#   end
 
-  def show_text(str)
-    @str_boxes[str] = decode_text_with_positioning(str)
-  rescue
-    puts "Error parsing file."
-  end
-  alias_method :show_text_with_positioning, :show_text
+#   def show_text(str)
+#     @str_boxes[str] = decode_text_with_positioning(str)
+#   rescue
+#     puts "Error parsing file."
+#   end
+#   alias_method :show_text_with_positioning, :show_text
 
-  def match(string_boxes)
-    string_boxes.each do |string, value|
-      string = [string] unless string.is_a?(Array)
-      begin
-        part = string.select.with_index { |_, i| i.even? }.join
-      rescue
-        nil
-      end
+#   def match(string_boxes)
+#     string_boxes.each do |string, value|
+#       string = [string] unless string.is_a?(Array)
+#       begin
+#         part = string.select.with_index { |_, i| i.even? }.join
+#       rescue
+#         nil
+#       end
 
-      @parts.each do |part_number|
-        # positions = part&.enum_for(:scan, /#{part_number}/)&.map {
-        # Regexp.last_match.begin(0) }
-        positions = part&.enum_for(:match, part_number)&.map { Regexp.last_match.begin(0) }
+#       @parts.each do |part_number|
+#         # positions = part&.enum_for(:scan, /#{part_number}/)&.map {
+#         # Regexp.last_match.begin(0) }
+#         positions = part&.enum_for(:match, part_number)&.map { Regexp.last_match.begin(0) }
 
-        next if positions.nil? || positions.empty?
+#         next if positions.nil? || positions.empty?
 
-        positions.each do |pos|
-          @page_parts[string] = {} unless @page_parts.key?(string)
-          @page_parts[string][part_number] = [] unless @page_parts[string].key?(part_number)
+#         positions.each do |pos|
+#           @page_parts[string] = {} unless @page_parts.key?(string)
+#           @page_parts[string][part_number] = [] unless @page_parts[string].key?(part_number)
 
-          @page_parts[string][part_number].push(value.cut(pos, (pos + part_number.length)))
-          @current_page_parts << part_number
-        end
-      end
+#           @page_parts[string][part_number].push(value.cut(pos, (pos + part_number.length)))
+#           @current_page_parts << part_number
+#         end
+#       end
 
-      left_part = part&.enum_for(:match, "-L")&.map { Regexp.last_match.begin(0) }
-      left_part&.each do |pos|
-        boxes = value.cut(pos, (pos + 2))
-        @canvas.line_width = 2.0
-        @canvas.stroke_color(150, 20, 20)
-        @canvas.polyline(*boxes[0].lower_left, *boxes[1].lower_right,
-          *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
-      end
-      right_part = part&.enum_for(:match, "-R")&.map { Regexp.last_match.begin(0) }
-      right_part&.each do |pos|
-        boxes = value.cut(pos, (pos + 2))
-        @canvas.line_width = 2.0
-        @canvas.stroke_color(30, 100, 30)
-        @canvas.polyline(*boxes[0].lower_left, *boxes[1].lower_right,
-          *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
-      end
-    end
-  end
+#       left_part = part&.enum_for(:match, "-L")&.map { Regexp.last_match.begin(0) }
+#       left_part&.each do |pos|
+#         boxes = value.cut(pos, (pos + 2))
+#         @canvas.line_width = 2.0
+#         @canvas.stroke_color(150, 20, 20)
+#         @canvas.polyline(*boxes[0].lower_left, *boxes[1].lower_right,
+#           *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
+#       end
+#       right_part = part&.enum_for(:match, "-R")&.map { Regexp.last_match.begin(0) }
+#       right_part&.each do |pos|
+#         boxes = value.cut(pos, (pos + 2))
+#         @canvas.line_width = 2.0
+#         @canvas.stroke_color(30, 100, 30)
+#         @canvas.polyline(*boxes[0].lower_left, *boxes[1].lower_right,
+#           *boxes[1].upper_right, *boxes[0].upper_left).close_subpath.stroke
+#       end
+#     end
+#   end
 
-  def assign_color(list, both_pages)
-    @color_key.keep_if { |key, _value| both_pages.include?(key) }
-    p = []
+#   def assign_color(list, both_pages)
+#     @color_key.keep_if { |key, _value| both_pages.include?(key) }
+#     p = []
 
-    list.each do |_key, value|
-      value.each do |k, _v|
-        p << k
-      end
-    end
-    unique_parts = p.uniq
-    unique_parts.each do |part|
-      n = @color_key.values
-      n.each_with_index do |color, _index|
-        # next if index == 0 # this was for skipping the page number if implemented
-        next if color.nil?
+#     list.each do |_key, value|
+#       value.each do |k, _v|
+#         p << k
+#       end
+#     end
+#     unique_parts = p.uniq
+#     unique_parts.each do |part|
+#       n = @color_key.values
+#       n.each_with_index do |color, _index|
+#         # next if index == 0 # this was for skipping the page number if implemented
+#         next if color.nil?
 
-        @used_colors << color unless @used_colors.include?(color)
-      end
-      next if @color_key.has_key?(part)
+#         @used_colors << color unless @used_colors.include?(color)
+#       end
+#       next if @color_key.has_key?(part)
 
-      color = @used_colors.empty? ? @colors.sample : (@colors - @used_colors).sample
+#       color = @used_colors.empty? ? @colors.sample : (@colors - @used_colors).sample
 
-      @color_key[part] = color
-    end
-  end
+#       @color_key[part] = color
+#     end
+#   end
 
-  def color(encodes)
-    encodes.each do |_string, boxes|
-      boxes.each_with_index do |a, _ai|
-        # next if ai.zero?
+#   def color(encodes)
+#     encodes.each do |_string, boxes|
+#       boxes.each_with_index do |a, _ai|
+#         # next if ai.zero?
 
-        a.each_with_index do |b, bi|
-          next if bi.zero?
+#         a.each_with_index do |b, bi|
+#           next if bi.zero?
 
-          b.each do |c|
-            c.each do |box|
-              x, y = *box.lower_left
-              tx, ty = *box.upper_right
-              color = @color_key.dig(a[0]).nil? ? "yellow" : @color_key.dig(a[0])
-              @canvas.fill_color(color).opacity(fill_alpha: 0.4)
-                .rectangle(x, y, tx - x, ty - y).fill
-            end
-          end
-        end
-      end
-    end
-  end
-end
+#           b.each do |c|
+#             c.each do |box|
+#               x, y = *box.lower_left
+#               tx, ty = *box.upper_right
+#               color = @color_key.dig(a[0]).nil? ? "yellow" : @color_key.dig(a[0])
+#               @canvas.fill_color(color).opacity(fill_alpha: 0.4)
+#                 .rectangle(x, y, tx - x, ty - y).fill
+#             end
+#           end
+#         end
+#       end
+#     end
+#   end
+# end
 
 ## for debugging ##
 # @color_key = {}
