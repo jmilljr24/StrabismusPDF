@@ -63,6 +63,16 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+
+  gem "rubocop", "~> 1.57"
+
+  gem "htmlbeautifier", "~> 1.4"
+
+  gem "standard", "~> 1.32"
+
+  gem "erb_lint", "~> 0.5.0"
+
+  gem "derailed"
 end
 
 group :test do
@@ -70,8 +80,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "rubocop", "~> 1.57"
 
 # gem 'hexapdf', path: './hexapdf-0.33.0'
 gem "dockerfile-rails", ">= 1.5", group: :development
@@ -84,11 +92,3 @@ gem "sentry-rails", "~> 5.12"
 gem "glib2"
 
 # gem "redis", "~> 5.0"
-
-gem "puma_worker_killer", "~> 0.3.1"
-
-gem "htmlbeautifier", "~> 1.4"
-
-gem "standard", "~> 1.32"
-
-gem "erb_lint", "~> 0.5.0"
