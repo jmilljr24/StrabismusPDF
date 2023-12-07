@@ -16,7 +16,7 @@ if ENV["RAILS_ENV"] == "production"
   require "concurrent-ruby"
   # worker_count = Integer(ENV.fetch("WEB_CONCURRENCY") {
   # Concurrent.physical_processor_count })
-  worker_count = Integer(ENV.fetch("WEB_CONCURRENCY") || 2)
+  worker_count = Integer(ENV.fetch("WEB_CONCURRENCY") || 4)
 
   workers worker_count if worker_count > 1
 end
