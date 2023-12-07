@@ -135,7 +135,7 @@ for pg in range(pdfDoc.page_count):
         highlight = None
         highlight = page.add_highlight_annot(set_positions)
         highlight.set_colors(stroke= fitz.utils.getColor(color_dict[part_num]))
-        highlight.update(opacity= 0.5)
+        highlight.update(opacity= 0.4)
 
 print(str(count) + ' Matches found')
 # Save to output
