@@ -12,4 +12,6 @@ The backend processing of the pdf's are done in python. My repo at https://githu
 The site uses a mix of Tailwind CSS, Turbo Frames/Streams and a PostgreSQL
 database.
 
-Deploy to heroku with postgresl db. No additional configuration needed.
+Deploy to heroku with postgresl db
+
+buildpack for libvips (photos from activestorage)
