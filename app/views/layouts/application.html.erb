@@ -12,7 +12,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
-
     <%= javascript_include_tag "application", "data-turbo-track": "reload",
     defer: true %>
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css">
@@ -65,5 +64,8 @@
       <a href="https://github.com/jmilljr24/StrabismusPDF" class="self-center pl-1.5 text-[0.6rem]">Feel free to check out the source<br>
         code and offer any suggestions</a>
     </div>
+    <% if user_signed_in? %>
+      <%= button_to "log_out", destroy_user_session_path, method: :delete  %>
+    <% end %>
   </footer>
 </html>

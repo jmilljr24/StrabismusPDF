@@ -1,5 +1,6 @@
 class BlogPostsController < ApplicationController
-  before_action :set_blog_post, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :set_blog_post, only: %i[show edit update destroy]
 
   # GET /blog_posts or /blog_posts.json
   def index
@@ -58,13 +59,14 @@ class BlogPostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog_post
-      @blog_post = BlogPost.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def blog_post_params
-      params.require(:blog_post).permit(:title, :content, :kit, :completed, :duration)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog_post
+    @blog_post = BlogPost.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def blog_post_params
+    params.require(:blog_post).permit(:title, :content, :kit, :completed, :duration)
+  end
 end
