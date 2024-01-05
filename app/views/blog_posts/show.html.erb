@@ -1,10 +1,12 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @blog_post %>
-
 <div>
-  <%= link_to "Edit this blog post", edit_blog_post_path(@blog_post) %> |
+  <% if user_signed_in? %>
+    <%= link_to "Edit this blog post", edit_blog_post_path(@blog_post) %>
+    <%= button_to "Destroy this blog post", @blog_post,
+  method: :delete %>
+  <% end %>
+</div>
+<div>
   <%= link_to "Back to blog posts", blog_posts_path %>
-
-  <%= button_to "Destroy this blog post", @blog_post, method: :delete %>
 </div>
