@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  kit: 1
+  completed: 2024-01-05
+  duration: 1.5
+
+two:
+  title: MyString
+  kit: 1
+  completed: 2024-01-05
+  duration: 1.5
