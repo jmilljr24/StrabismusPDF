@@ -92,3 +92,5 @@ gem "sentry-rails", "~> 5.12"
 gem "glib2"
 
 # gem "redis", "~> 5.0"
+
+gem "aws-sdk-s3", "~> 1.142", require: false
