@@ -1,0 +1,15 @@
+<div class="m-2 mt-4">
+  <% if blog_post.title.present? %>
+    <h2 class="font-bold text-3xl text-gray-800"><%=
+    blog_post.title.titleize %></h2>
+  <% else %>
+    <h2 class="font-bold text-3xl text-gray-800"><%=
+  blog_post.section.titleize %></h2>
+  <% end %>
+  <div class="pb-7">Total Hours: <%= blog_post.duration %> </div>
+  <div class="flex justify-between items-center">
+    <button class="bg-slate-200 border-0 rounded-md px-2 py-1 text-sm text-[rgb(80,124,92)]"><%= blog_post.kit %></button>
+    <div class="text-slate-500 text-sm"><%=
+            blog_post.completed.to_fs(:long_ordinal)%> </div>
+  </div>
+</div>

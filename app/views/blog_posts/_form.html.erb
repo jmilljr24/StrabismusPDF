@@ -23,7 +23,7 @@
   </div>
   <div>
     <%= form.label :section, style: "display: block" %>
-    <%= form.number_field :section, min: 0 %>
+    <%= form.select :section, options_for_select(BlogPost.sections.keys, selected: blog_post.section) %>
   </div>
   <div>
     <%= form.label :completed, style: "display: block" %>
