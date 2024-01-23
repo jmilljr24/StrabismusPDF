@@ -1,10 +1,16 @@
 <p style="color: green"><%= notice %></p>
-<div id="blog_posts" class="max-w-5xl m-5">
-  <% @blog_posts.each do |blog_post| %>
-    <%= render 'post_card', blog_post: blog_post %>
-    <p>
-      <%= link_to "Show this blog post", blog_post %>
-    </p>
+<div class="m-5">
+  <% if @blog_posts.last %>
+    <%= render 'head_post_card', blog_post: @blog_posts.last %>
   <% end %>
+</div>
+<div>
+  <h1 class="pl-4 pt-10 font-bold text-xl">Latest Posts</h1>
+  <div id="blog_posts" class="max-w-5xl m-5 grid grid-cols-3 justify-items-center
+  items-center gap-4">
+    <% @blog_posts.each do |blog_post| %>
+      <%= render 'post_card', blog_post: blog_post %>
+    <% end %>
+  </div>
 </div>
 <%= link_to "New blog post", new_blog_post_path %>

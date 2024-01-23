@@ -96,3 +96,5 @@ gem "glib2"
 gem "aws-sdk-s3", "~> 1.142", require: false
 
 gem "devise", "~> 4.9"
+
+gem "faker", "~> 3.2"

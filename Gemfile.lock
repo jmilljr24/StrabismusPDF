@@ -161,6 +161,8 @@ GEM
       smart_properties
     error_highlight (0.5.1)
     erubi (1.12.0)
+    faker (3.2.3)
+      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
@@ -374,6 +376,7 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   erb_lint (~> 0.5.0)
   error_highlight (>= 0.4.0)
+  faker (~> 3.2)
   glib2
   htmlbeautifier (~> 1.4)
   image_processing (~> 1.2)
