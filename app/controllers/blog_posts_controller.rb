@@ -4,8 +4,14 @@ class BlogPostsController < ApplicationController
 
   # GET /blog_posts or /blog_posts.json
   def index
-    @q = BlogPost.ransack(params[:q])
-    @blog_posts = @q.result(distinct: true)
+    # @q = BlogPost.ransack(params[:q])
+    # @blog_posts = @q.result(distinct: true)
+    @blog_posts = BlogPost.all
+  end
+
+  def filter_kit
+    @blog_posts = BlogPost.filter_by_kit(params[:kit]) if params[:kit].present?
+    render action: :index
   end
 
   # GET /blog_posts/1 or /blog_posts/1.json

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :blog_posts
+  resources :blog_posts do
+    collection do
+      get :filter_kit
+    end
+  end
   resources :user_pdfs
   # resources :parse
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

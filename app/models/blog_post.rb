@@ -1,6 +1,8 @@
 class BlogPost < ApplicationRecord
   has_rich_text :content
 
+  scope :filter_by_kit, ->(kit) { where kit: kit }
+
   enum kit: ["Miscellaneous", "Empennage", "Wing", "Fuselage", "Finishing", "Firewall Forward"]
   enum section: ["ONE", "TWO", "THREE", "FOUR", "FIVE", "VERTICAL
   STABILIZER", "RUDDER", "HORIZONTAL STABILIZER", "ELEVATORS", "TAILCONE", "EMPENNAGE ATTACH", "EMPENNAGE

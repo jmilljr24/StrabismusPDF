@@ -274,10 +274,6 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
-    ransack (4.1.1)
-      activerecord (>= 6.1.5)
-      activesupport (>= 6.1.5)
-      i18n
     rdoc (6.6.0)
       psych (>= 4.0.0)
     regexp_parser (2.8.2)
@@ -389,7 +385,6 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.1)
-  ransack (~> 4.1)
   rubocop (~> 1.57)
   selenium-webdriver
   sentry-rails (~> 5.12)

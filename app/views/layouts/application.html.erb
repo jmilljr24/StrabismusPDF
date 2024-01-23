@@ -66,6 +66,7 @@
         code and offer any suggestions</a>
     </div>
     <% if user_signed_in? %>
+      <%= link_to "New blog post", new_blog_post_path %> <span>| | </span>
       <%= button_to "log_out", destroy_user_session_path, method: :delete  %>
     <% end %>
   </footer>

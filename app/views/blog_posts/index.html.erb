@@ -1,23 +1,15 @@
 <p style="color: green"><%= notice %></p>
-<%= search_form_for @q do |f| %>
-  <%= f.label :kit_eq, "Kit" %>
-  <%= f.select :kit_eq, BlogPost.kits, {include_blank: 'All'}, class: "form-select" %>
-  <%= f.label :section_eq %>
-  <%= f.select :section_eq, BlogPost.sections, {include_blank: 'All'}, class: "form-select" %>
-  <%= f.submit %>
-  <div class="m-5">
-    <% if BlogPost.last %>
-      <%= render 'head_post_card', blog_post: BlogPost.last %>
+<div class="m-5">
+  <% if BlogPost.last %>
+    <%= render 'head_post_card', blog_post: BlogPost.last %>
+  <% end %>
+</div>
+<div>
+  <h1 class="pl-4 pt-10 font-bold text-xl">Latest Posts</h1>
+  <div id="blog_posts" class="max-w-5xl m-5 grid grid-cols-3 justify-items-center
+  items-center gap-4">
+    <% @blog_posts.each do |blog_post| %>
+      <%= render 'post_card', blog_post: blog_post %>
     <% end %>
   </div>
-  <div>
-    <h1 class="pl-4 pt-10 font-bold text-xl">Latest Posts</h1>
-    <div id="blog_posts" class="max-w-5xl m-5 grid grid-cols-3 justify-items-center
-  items-center gap-4">
-      <% @blog_posts.each do |blog_post| %>
-        <%= render 'post_card', blog_post: blog_post %>
-      <% end %>
-    </div>
-  </div>
-  <%= link_to "New blog post", new_blog_post_path %>
-<% end %>
+</div>
