@@ -26,4 +26,8 @@ class BlogPost < ApplicationRecord
   & COWLING", "GEAR LEG
   & WHEEL
   FAIRINGS", "SEATS & SEATBELTS", "CABIN HEAT & VENTILATION"]
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["completed", "created_at", "duration", "id", "id_value", "kit", "section", "title", "updated_at"]
+  end
 end
