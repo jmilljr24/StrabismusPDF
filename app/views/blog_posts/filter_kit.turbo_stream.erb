@@ -1,0 +1,7 @@
+<%= turbo_stream.update "search_results", partial: "search_results"%>
+<% if params[:kit].present?%>
+  <%= turbo_stream.append "latest_posts", partial: "clear_button", locals:
+{blog_posts: @blog_posts, kit: params[:kit]}%>
+<% else %>
+  <%= turbo_stream.remove "clear_button" %>
+<% end%>

@@ -7,14 +7,16 @@
       <h2 class="font-bold text-3xl text-gray-800"><%=
   blog_post.section.titleize %></h2>
     <% end %>
-    <div class="pb-7">Total Hours: <%= blog_post.duration %> </div>
+    <div class="pb-7">Total Hours: <%= blog_post.duration %>
+    </div>
   <% end %>
   <div class="flex justify-between items-center">
-    <%= button_to blog_post.kit, filter_kit_blog_posts_path, method: :get, params: {kit:
+    <%= button_to blog_post.kit, filter_kit_blog_posts_path, method: :get,
+    data: {turbo_stream: true}, params: {kit:
     blog_post.kit}, class: "bg-slate-200 border-0 rounded-md px-2 py-1 text-sm
     text-[rgb(80,124,92)]" %>
-    <%= button_to 'clear', blog_posts_path, method: :get %>
     <div class="text-slate-500 text-sm"><%=
-            blog_post.completed.to_fs(:long_ordinal)%> </div>
+            blog_post.completed.to_fs(:long_ordinal)%>
+    </div>
   </div>
 </div>

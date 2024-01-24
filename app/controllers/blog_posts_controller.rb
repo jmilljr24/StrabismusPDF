@@ -10,8 +10,11 @@ class BlogPostsController < ApplicationController
   end
 
   def filter_kit
-    @blog_posts = BlogPost.filter_by_kit(params[:kit]) if params[:kit].present?
-    render action: :index
+    @blog_posts = params[:kit].present? ? BlogPost.filter_by_kit(params[:kit]) : BlogPost.all
+    respond_to do |format|
+      format.html { render action: :index }
+      format.turbo_stream
+    end
   end
 
   # GET /blog_posts/1 or /blog_posts/1.json

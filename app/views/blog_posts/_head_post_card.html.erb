@@ -13,11 +13,13 @@ dark:bg-gray-800 dark:border-gray-700 relative z-10">
         <h2 class="font-bold text-3xl text-gray-800"><%=
   blog_post.section.titleize %></h2>
       <% end %>
-      <div class="pb-7">Total Hours: <%= blog_post.duration %> </div>
+      <div class="pb-7">Total Hours: <%= blog_post.duration %>
+      </div>
       <div class="flex justify-between items-center">
         <button class="bg-slate-200 border-0 rounded-md px-2 py-1 text-sm text-[rgb(80,124,92)]"><%= blog_post.kit %></button>
         <div class="text-slate-500 text-sm"><%=
-            blog_post.completed.to_fs(:long_ordinal)%> </div>
+            blog_post.completed.to_fs(:long_ordinal)%>
+        </div>
       </div>
     </div>
   <% end %>

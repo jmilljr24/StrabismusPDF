@@ -1,0 +1,13 @@
+<div id="clear_button" class="flex justify-center">
+  <%= button_to filter_kit_blog_posts_path, method: :get, data: {turbo_stream:
+  true}, class: "flex mt-8 mr-16
+    font-bold text-xl bg-slate-200 border-0 rounded-md px-2 py-1
+        text-[rgb(80,124,92)]" do %>
+    <div class="flex">
+      <div class="mx-4 text-xl"><%= kit %></div>
+      <svg class="h-3 w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+  <% end %>
+</div>

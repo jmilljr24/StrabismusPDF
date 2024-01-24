@@ -4,12 +4,12 @@
     <%= render 'head_post_card', blog_post: BlogPost.last %>
   <% end %>
 </div>
-<div>
-  <h1 class="pl-4 pt-10 font-bold text-xl">Latest Posts</h1>
-  <div id="blog_posts" class="max-w-5xl m-5 grid grid-cols-3 justify-items-center
-  items-center gap-4">
-    <% @blog_posts.each do |blog_post| %>
-      <%= render 'post_card', blog_post: blog_post %>
-    <% end %>
+<div class="flex flex-col">
+  <div class="flex justify-between" id="latest_posts" >
+    <h1 class="pl-4 pt-10 pb-2 font-bold text-xl">Latest Posts</h1>
   </div>
+  <div id="search_results">
+    <%= render 'search_results'%>
+  </div>
+</div>
 </div>
