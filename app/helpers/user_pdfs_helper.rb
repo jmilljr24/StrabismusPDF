@@ -49,8 +49,8 @@ module UserPdfsHelper
         raise "Processing failed" unless status_thread.value.success?
       end
 
-      file = File.open(output_file)
-      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: "colored_#{file_name}")
+      new_file = File.open(output_file)
+      @blob = ActiveStorage::Blob.create_and_upload!(io: new_file, filename: "colored_#{file_name}")
     end
   end
 end
