@@ -32,19 +32,25 @@ module UserPdfsHelper
   def python_color(user_pdf) # rubocop:disable Metrics/
     file_name = user_pdf.pdf.filename
     # colored_file_name = "#{file_name}_colored.pdf"
-    input_file = ActiveStorage::Blob.service.path_for(user_pdf.pdf.key)
-    output_file = Rails.root.join("public", file_name.to_s)
-    # script_blob = ActiveStorage::Blob.find_by_filename("highlight.py")
-    # script = ActiveStorage::Blob.service.path_for(script_blob.key)
-    script = Rails.root.join("app", "assets", "python", "highlight.py")
-    Open3.popen2("python3", "#{script}", "-i", "#{input_file}", "-o", "#{output_file}") do |stdin, stdout, status_thread|
-      stdout.each_line do |line|
-        puts "LINE: #{line}"
-      end
-      raise "Processing failed" unless status_thread.value.success?
-    end
+    # input_file = ActiveStorage::Blob.service.path_for(user_pdf.pdf.key)
+    user_pdf.pdf.open do |file|
+      # ...
 
-    file = File.open(output_file)
-    @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: "colored_#{file_name}")
+      input_file = file.path
+
+      output_file = Rails.root.join("public", file_name.to_s)
+      # script_blob = ActiveStorage::Blob.find_by_filename("highlight.py")
+      # script = ActiveStorage::Blob.service.path_for(script_blob.key)
+      script = Rails.root.join("app", "assets", "python", "highlight.py")
+      Open3.popen2("python3", "#{script}", "-i", "#{input_file}", "-o", "#{output_file}") do |stdin, stdout, status_thread|
+        stdout.each_line do |line|
+          puts "LINE: #{line}"
+        end
+        raise "Processing failed" unless status_thread.value.success?
+      end
+
+      file = File.open(output_file)
+      @blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: "colored_#{file_name}")
+    end
   end
 end
