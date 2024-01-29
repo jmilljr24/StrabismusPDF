@@ -16,4 +16,10 @@
   border-gray-300 rounded-lg cursor-pointer  bg-gray-50 dark:text-gray-100
   focus:outline-none dark:bg-[rgb(80,124,92)] dark:border-gray-500
   dark:placeholder-gray-400" %>
+  <div data-controller="upload">
+    <%= form.file_field :pdf, direct_upload: true,
+    data: { upload_target: "input",
+            action:        "change->upload#uploadFile" } %>
+    <div data-upload-target="progress"></div>
+  </div>
 <% end %>
