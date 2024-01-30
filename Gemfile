@@ -73,6 +73,10 @@ group :development do
   gem "erb_lint", "~> 0.5.0"
 
   gem "derailed"
+
+  gem "faker", "~> 3.2"
+
+  gem "pry", "~> 0.14.2"
 end
 
 group :test do
@@ -96,7 +100,3 @@ gem "glib2"
 gem "aws-sdk-s3", "~> 1.142", require: false
 
 gem "devise", "~> 4.9"
-
-gem "faker", "~> 3.2"
-
-gem "pry", "~> 0.14.2"
