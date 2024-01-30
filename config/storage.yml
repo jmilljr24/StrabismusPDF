@@ -15,7 +15,7 @@ amazon:
   # secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
   region: us-east-1
   # region: ENV["S3_REGION"]
-  bucket: colorcode.parts
+  bucket: colorcodevansplans
   # bucket: ENV["S3_BUCKET_NAME"]
   public: true
 # Remember not to checkin your GCS keyfile to a repository
