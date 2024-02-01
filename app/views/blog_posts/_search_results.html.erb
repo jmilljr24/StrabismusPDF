@@ -1,4 +1,4 @@
-<div id="blog_posts" class="max-w-5xl m-5 grid grid-cols-3 justify-items-center
+<div id="blog_posts" class="max-w-5xl m-5 grid grid-cols-1 md:grid-cols-3 justify-items-center
   items-center gap-4">
   <% @blog_posts.each do |blog_post| %>
     <%= render 'post_card', blog_post: blog_post %>
