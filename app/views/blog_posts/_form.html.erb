@@ -14,6 +14,10 @@
     <%= form.text_field :title %>
   </div>
   <div>
+    <%= form.label :cover_image %>
+    <%= form.file_field :cover_image %>
+  </div>
+  <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.rich_text_area :content %>
   </div>

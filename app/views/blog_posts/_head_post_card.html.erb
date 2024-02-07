@@ -1,8 +1,7 @@
 <%= link_to blog_post do %>
   <% if blog_post %>
-    <% if !blog_post.content.embeds.empty? %>
-      <%= image_tag blog_post.content.embeds.find{|embeds|
-  embeds.image?}.variant(resize_to_limit: [800, 800]), class: "rounded-md object-cover h-[500px] w-[900px]"%>
+    <% if blog_post.cover_image %>
+      <%= image_tag blog_post.cover_image.variant(resize_to_limit: [800, 800]), class: "rounded-md object-cover h-[500px] w-[900px]"%>
     <% end %>
     <div class="-mt-24 ml-10 p-4 max-w-xs bg-gray-100 border border-grey-200 rounded-lg shadow
 dark:bg-gray-800 dark:border-gray-700 relative z-10">

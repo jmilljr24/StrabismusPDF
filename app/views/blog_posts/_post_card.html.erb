@@ -1,11 +1,10 @@
 <div  class="p-3 bg-grey-100 border border-grey-200 rounded-lg shadow
 dark:bg-gray-800 dark:border-gray-700 grid grid-cols-1">
   <% if blog_post %>
-    <% if !blog_post.content.embeds.empty? %>
+    <% if blog_post.cover_image.present? %>
       <%= link_to blog_post do %>
-        <%= image_tag blog_post.content.embeds.find{|embeds|
-    embeds.image?}.variant(resize_to_limit: [400, 400]), class: "rounded-md
-    object-cover h-48 w-80"%>
+        <%= image_tag blog_post.cover_image.variant(resize_to_limit: [400, 400]), class: "rounded-md
+    object-cover h-48 w-80" %>
       <% end %>
     <% end %>
     <%= render 'post_card_text', blog_post: blog_post %>

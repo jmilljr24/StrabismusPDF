@@ -1,5 +1,8 @@
 class BlogPost < ApplicationRecord
+  has_one_attached :cover_image
   has_rich_text :content
+
+  validates :cover_image, presence: true
 
   scope :filter_by_kit, ->(kit) { where kit: kit }
 
