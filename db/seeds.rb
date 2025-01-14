@@ -8,12 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-40.times do
-  BlogPost.create do |post|
-    post.content = ActionText::RichText.first.body
-    post.kit = rand(0..5)
-    post.completed = Faker::Date.between(from: 50.days.ago, to: Date.today)
-    post.duration = rand(1..300)
-    post.section = rand(6..49)
-  end
-end
+# 40.times do
+#   BlogPost.create do |post|
+#     post.content = ActionText::RichText.first.body
+#     post.kit = rand(0..5)
+#     post.completed = Faker::Date.between(from: 50.days.ago, to: Date.today)
+#     post.duration = rand(1..300)
+#     post.section = rand(6..49)
+#   end
+# end

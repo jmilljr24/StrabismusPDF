@@ -160,7 +160,6 @@ GEM
       rainbow
       rubocop
       smart_properties
-    error_highlight (0.5.1)
     erubi (1.12.0)
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
@@ -208,6 +207,7 @@ GEM
     mini_histogram (0.3.1)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.8)
     minitest (5.20.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
@@ -222,7 +222,8 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.4-x86_64-linux)
+    nokogiri (1.15.4)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.23.0)
@@ -380,7 +381,6 @@ DEPENDENCIES
   devise (~> 4.9)
   dockerfile-rails (>= 1.5)
   erb_lint (~> 0.5.0)
-  error_highlight (>= 0.4.0)
   faker (~> 3.2)
   glib2
   htmlbeautifier (~> 1.4)
@@ -403,7 +403,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.3.0p0
 
 BUNDLED WITH
    2.4.22
