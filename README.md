@@ -7,10 +7,12 @@ files for building the kit plane. Numerous part numbers are reference between
 the written steps and a graphical representation of the parts being put
 together.
 
-The backend processing of the pdf's are done in python. My repo at https://github.com/jmilljr24/HighlightParts
+The backend processing of the pdf's are done in python. My repo at <https://github.com/jmilljr24/HighlightParts>
 
 The site uses a mix of Tailwind CSS, Turbo Frames/Streams and a PostgreSQL
 database.
+
+pip install -r requirements.txt
 
 Deploy to heroku with postgresl db
 
