@@ -100,3 +100,13 @@ gem "glib2"
 gem "aws-sdk-s3", "~> 1.142", require: false
 
 gem "devise", "~> 4.9"
+
+gem "solid_queue", "~> 1.1"
+
+gem "solid_cable", "~> 3.0"
+
+gem "foreman", "~> 0.88.1"
+
+gem "tailwindcss-rails", "~> 4.2"
+
+gem "tailwindcss-ruby", "~> 4.1"

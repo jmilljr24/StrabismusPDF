@@ -34,21 +34,21 @@ development:
     #   https://stackoverflow.com/questions/59089991/ruby-2-6-5-and-postgresql-pg-gem-segmentation-fault
     gssencmode: disable
 
-#  cable:
-#    <<: *default
-#    database: cable
-#    host: <%= ENV.fetch("CABLE_HOST", "localhost") %>
-#    port: <%= ENV.fetch("CABLE_PORT", "5432") %>
-#    migrations_paths: db/cable_migrate
-#    gssencmode: disable
+  cable:
+    <<: *default
+    database: strabismus_cable
+    host: <%= ENV.fetch("CABLE_HOST", "localhost") %>
+    port: <%= ENV.fetch("CABLE_PORT", "5432") %>
+    migrations_paths: db/cable_migrate
+    gssencmode: disable
 
-#  queue:
-#    <<: *default
-#    database: queue
-#    host: <%= ENV.fetch("QUEUE_HOST", "localhost") %>
-#    port: <%= ENV.fetch("QUEUE_PORT", "5432") %>
-#    migrations_paths: db/queue_migrate
-#    gssencmode: disable
+  queue:
+    <<: *default
+    database: strabismus_queue
+    host: <%= ENV.fetch("QUEUE_HOST", "localhost") %>
+    port: <%= ENV.fetch("QUEUE_PORT", "5432") %>
+    migrations_paths: db/queue_migrate
+    gssencmode: disable
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
