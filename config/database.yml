@@ -101,7 +101,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    host: 127.0.0.1 #<%= ENV["DB_HOST"] %>
+    host: <%= ENV["DB_HOST"] %>
     database: postgres
     timeout: 5000
   cable:
