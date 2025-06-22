@@ -110,3 +110,5 @@ gem "foreman", "~> 0.88.1"
 gem "tailwindcss-rails", "~> 4.2"
 
 gem "tailwindcss-ruby", "~> 4.1"
+
+gem "kamal", "~> 2.7"
