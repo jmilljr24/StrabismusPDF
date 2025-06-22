@@ -98,17 +98,17 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-#production:
-#  primary: &primary_production
-#    <<: *default
-#    host: <%= ENV["DB_HOST"] %>
-#    database: postgres
-#    timeout: 5000
-#  cable:
-#    <<: *primary_production
-#    database: cable
-#    migrations_paths: db/cable_migrate
-#  queue:
-#    <<: *primary_production
-#    database: queue
-#    migrations_paths: db/queue_migrate
+production:
+  primary: &primary_production
+    <<: *default
+    host: 127.0.0.1 #<%= ENV["DB_HOST"] %>
+    database: postgres
+    timeout: 5000
+  cable:
+    <<: *primary_production
+    database: cable
+    migrations_paths: db/cable_migrate
+  queue:
+    <<: *primary_production
+    database: queue
+    migrations_paths: db/queue_migrate
