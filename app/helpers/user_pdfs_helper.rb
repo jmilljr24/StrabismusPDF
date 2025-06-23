@@ -38,7 +38,7 @@ module UserPdfsHelper
 
       input_file = file.path
 
-      output_file = Rails.root.join("public", file_name.to_s)
+      output_file = Rails.root.join("tmp", file_name.to_s)
       # script_blob = ActiveStorage::Blob.find_by_filename("highlight.py")
       # script = ActiveStorage::Blob.service.path_for(script_blob.key)
       script = Rails.root.join("app", "assets", "python", "highlight.py")
