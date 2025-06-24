@@ -14,7 +14,8 @@ class ColorizeJob < ApplicationJob
       end
     end
 
-    Turbo::StreamsChannel.broadcast_replace_to pdf, target: "processing", content: @last_status
+    # Turbo::StreamsChannel.broadcast_replace_to pdf, target: "processing", content: @last_status
+    Turbo::StreamsChannel.broadcast_replace_to pdf, target: "processing", partial: "user_pdfs/pdf_list", locals: {user_pdf: pdf}
   end
 
   private

@@ -1,6 +1,7 @@
 class UserPdf < ApplicationRecord
   include PdfColorizable
   has_one_attached :pdf, dependent: :destroy
+  has_many_attached :colored_pdfs
   validate :acceptable_pdf
 
   private

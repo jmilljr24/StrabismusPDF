@@ -40,7 +40,7 @@ class UserPdfsController < ApplicationController
 
     respond_to do |format|
       if @user_pdf.save
-        UserPdf.first.destroy if UserPdf.count > 5
+        # UserPdf.first.destroy if UserPdf.count > 5
         ColorizeJob.perform_later(@user_pdf.id)
         format.turbo_stream
         format.html { redirect_to user_pdf_url(@user_pdf) }
