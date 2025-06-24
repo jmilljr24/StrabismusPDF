@@ -126,6 +126,9 @@ GEM
     connection_pool (2.5.3)
     crass (1.0.6)
     date (3.4.1)
+    debug (1.11.0)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     derailed (0.1.0)
       derailed_benchmarks
     derailed_benchmarks (2.2.1)
@@ -485,6 +488,7 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1.142)
   bootsnap
   capybara
+  debug
   derailed
   devise (~> 4.9)
   dockerfile-rails (>= 1.5)

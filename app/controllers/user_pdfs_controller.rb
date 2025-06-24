@@ -35,18 +35,17 @@ class UserPdfsController < ApplicationController
   end
 
   # POST /user_pdfs or /user_pdfs.json
-  def create # rubocop:disable Metrics
+  def create
     @user_pdf = UserPdf.new(user_pdf_params)
 
     respond_to do |format|
       if @user_pdf.save
         UserPdf.first.destroy if UserPdf.count > 5
+        ColorizeJob.perform_later(@user_pdf.id)
         format.turbo_stream
         format.html { redirect_to user_pdf_url(@user_pdf) }
-        format.json { render :show, status: :created, location: @user_pdf }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user_pdf.errors, status: :unprocessable_entity }
       end
     end
   end

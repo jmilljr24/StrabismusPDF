@@ -1,4 +1,5 @@
 class UserPdf < ApplicationRecord
+  include PdfColorizable
   has_one_attached :pdf, dependent: :destroy
   validate :acceptable_pdf
 
