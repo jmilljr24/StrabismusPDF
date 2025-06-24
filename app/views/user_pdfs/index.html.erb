@@ -9,7 +9,7 @@
     <%= image_tag("adobe-view.png" ) %>
   </div>
 </div>
-<div class="h-[575px] flex flex-col justify-center">
+<div class=" flex flex-col justify-center" >
   <%= turbo_frame_tag id="new_user_pdf", src: new_user_pdf_path do %>
     <%= link_to 'Click to start new upload', new_user_pdf_path %>
   <% end %>
