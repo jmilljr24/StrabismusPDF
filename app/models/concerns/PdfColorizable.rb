@@ -2,7 +2,7 @@ module PdfColorizable
   extend ActiveSupport::Concern
 
   def add_color(&block)
-    file_name = pdf.filename
+    file_name = pdf.filename.base
     pdf.open do |file|
       input_file = file.path
 

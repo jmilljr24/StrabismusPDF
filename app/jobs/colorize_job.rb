@@ -14,7 +14,7 @@ class ColorizeJob < ApplicationJob
       end
     end
 
-    # Turbo::StreamsChannel.broadcast_replace_to pdf, target: "processing", content: @last_status
+    sleep 0.1 if last_broadcast_time.nil? || (monotonic_time - last_broadcast_time) < 0.2
     Turbo::StreamsChannel.broadcast_replace_to pdf, target: "processing", partial: "user_pdfs/pdf_list", locals: {user_pdf: pdf}
   end
 
