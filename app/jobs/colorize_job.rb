@@ -9,13 +9,13 @@ class ColorizeJob < ApplicationJob
       now = monotonic_time
       @last_status = status
       if last_broadcast_time.nil? || (now - last_broadcast_time) >= DEBOUNCE_TIME
-        Turbo::StreamsChannel.broadcast_update_to pdf, target: "user_pdf_#{pdf_id}", content: status
+        Turbo::StreamsChannel.broadcast_update_to pdf, target: "processing", content: status
         last_broadcast_time = now
       end
     end
 
     sleep 0.1 if last_broadcast_time.nil? || (monotonic_time - last_broadcast_time) < 0.2
-    Turbo::StreamsChannel.broadcast_replace_to pdf, target: "processing", partial: "user_pdfs/pdf_list", locals: {user_pdf: pdf}
+    Turbo::StreamsChannel.broadcast_replace_to pdf, target: pdf, partial: "user_pdfs/pdf_list", locals: {user_pdf: pdf}
   end
 
   private
