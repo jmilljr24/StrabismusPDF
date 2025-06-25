@@ -12,7 +12,10 @@ module PdfColorizable
         stdout.each_line do |line|
           @last_line = line
           puts "LINE: #{line}"
-          yield line.strip if block
+          if line.strip.to_i % 20 == 0
+            yield line.strip.to_i if block
+            sleep 0.2
+          end
         end
         raise "Processing failed" unless status_thread.value.success?
       end
