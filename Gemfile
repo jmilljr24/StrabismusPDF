@@ -115,3 +115,5 @@ gem "thruster", "~> 0.1.14"
 gem "propshaft", "~> 1.1"
 
 gem "importmap-rails", "~> 2.1"
+
+gem "pdf-reader", "~> 2.14"

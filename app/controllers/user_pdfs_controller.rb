@@ -40,8 +40,9 @@ class UserPdfsController < ApplicationController
 
     respond_to do |format|
       if @user_pdf.save
+        @user_pdf.pdf.analyze
         # UserPdf.first.destroy if UserPdf.count > 5
-        ColorizeJob.perform_later(@user_pdf.id)
+        ColorizeJob.perform_later(@user_pdf.id, @user_pdf.pdf.metadata["page_count"])
         format.turbo_stream
         format.html { redirect_to user_pdf_url(@user_pdf) }
       else
@@ -52,7 +53,7 @@ class UserPdfsController < ApplicationController
 
   # PATCH/PUT /user_pdfs/1 or /user_pdfs/1.json
   def update
-    ColorizeJob.perform_later(@user_pdf.id)
+    ColorizeJob.perform_later(@user_pdf.id, @user_pdf.pdf.metadata["page_count"])
     respond_to do |format|
       format.turbo_stream
     end

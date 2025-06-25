@@ -12,15 +12,24 @@
         root_path,
         class:
           " self-center
-                                                        py-2 px-4 text-[rgb(80,124,92)] text-xs
-                                                         sm:text-base hover:text-gray-400 font-semibold border rounded",
+                                                                                        py-2 px-4 text-[rgb(80,124,92)] text-xs
+                                                                                         sm:text-base hover:text-gray-400 font-semibold border rounded",
         data: {
           turbo_frame: "new_user_pdf",
         } %>
       </div>
       <div id="processing" class="text-gray-400">
         <% unless user_pdf.colored_pdfs.any? %>
-          <p>Processing...</p>
+          <% if user_pdf.pdf.metadata['page_count'].present? %>
+            <p>
+              Processing
+              <%= user_pdf.pdf.metadata["page_count"] %>
+              pages...</p>
+
+            <%= render partial: "/user_pdfs/progress_bar", locals: { progress: 0 } %>
+          <% else %>
+            <p>Processing...</p>
+          <% end %>
         <% end %>
       </div>
       <div class="flex flex-col justify-center gap-5">
@@ -38,8 +47,8 @@
             rails_blob_path(pdf, disposition: "attachment"),
             class:
               "shadow min-w-max max-h-fit bg-[rgb(80,124,92)]
-                                                                                hover:bg-gray-400 focus:shadow-outline
-                                                                                focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
+                                                                                                                                hover:bg-gray-400 focus:shadow-outline
+                                                                                                                                focus:outline-none text-white font-bold m-2 py-2 px-4 rounded max-w-min" %>
 
           </div>
         <% end %>
@@ -56,8 +65,8 @@
           method: :patch,
           class:
             "
-                                                                     self-center
-                                                                        focus:outline-none text-gray-900 font-bold text-center " %>
+                                                                                                             self-center
+                                                                                                                focus:outline-none text-gray-900 font-bold text-center " %>
         </div>
       </div>
     </div>

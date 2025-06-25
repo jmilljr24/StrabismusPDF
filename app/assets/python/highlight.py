@@ -106,8 +106,8 @@ def last_letter(word):
 # Setup for pdf scan
 pdfDoc = fitz.open(input_file)
 # Print page count of input PDF
-num_pages = pdfDoc.page_count
-print(str(num_pages) + " pages to process...")
+# num_pages = pdfDoc.page_count
+# print(str(num_pages) + " pages to process...")
 
 # Iterate through pages
 count = 0
@@ -170,4 +170,3 @@ pdfDoc.close()
 # Save the output buffer to the output file
 with open(output_file, mode="wb") as f:
     f.write(output_buffer.getbuffer())
-

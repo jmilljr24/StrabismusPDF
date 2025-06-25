@@ -11,10 +11,11 @@ module PdfColorizable
       Open3.popen2("python3", "#{script}", "-i", "#{input_file}", "-o", "#{output_file}") do |stdin, stdout, status_thread|
         stdout.each_line do |line|
           @last_line = line
-          puts "LINE: #{line}"
-          if line.strip.to_i % 20 == 0
-            Turbo::StreamsChannel.broadcast_update_to self, target: "processing", content: "Processing Page: #{line}"
-            # yield line.strip.to_i if block
+          puts line
+          if line.strip.to_i % 10 == 0
+            # Turbo::StreamsChannel.broadcast_update_to self, target: "processing", content: "Processing Page: #{line}"
+            yield line.strip.to_i if block
+            sleep 0.2
           end
         end
         raise "Processing failed" unless status_thread.value.success?
