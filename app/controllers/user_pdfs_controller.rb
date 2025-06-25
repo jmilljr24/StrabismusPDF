@@ -2,7 +2,7 @@
 
 class UserPdfsController < ApplicationController
   include UserPdfsHelper
-  before_action :set_user_pdf, only: %i[create]
+  before_action :set_user_pdf, only: %i[update]
 
   # GET /user_pdfs or /user_pdfs.json
   def index
@@ -36,7 +36,7 @@ class UserPdfsController < ApplicationController
 
   # POST /user_pdfs or /user_pdfs.json
   def create
-    @user_pdf ||= UserPdf.new(user_pdf_params)
+    @user_pdf = UserPdf.new(user_pdf_params)
 
     respond_to do |format|
       if @user_pdf.save
@@ -51,17 +51,12 @@ class UserPdfsController < ApplicationController
   end
 
   # PATCH/PUT /user_pdfs/1 or /user_pdfs/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @user_pdf.update(user_pdf_params)
-  #       format.html { redirect_to user_pdf_url(@user_pdf), notice: "User pdf was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @user_pdf }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @user_pdf.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    ColorizeJob.perform_later(@user_pdf.id)
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
 
   # DELETE /user_pdfs/1 or /user_pdfs/1.json
   # def destroy
@@ -97,11 +92,7 @@ class UserPdfsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user_pdf
-    if params[:id]
-      @user_pdf = UserPdf.find(params[:id])
-    else
-      UserPdf.new(user_pdf_params)
-    end
+    @user_pdf = UserPdf.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
