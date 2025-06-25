@@ -1,0 +1,6 @@
+<%= turbo_stream_from user_pdf %>
+<div id="processing">
+  <p class="text-gray-600" >Processing...</p>
+  <%= tag.div id: dom_id(user_pdf), class: "min-h-100 text-gray-600 " do %>
+</div>
+<% end %>
