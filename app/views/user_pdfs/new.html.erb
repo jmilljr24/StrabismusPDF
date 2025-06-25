@@ -1,6 +1,7 @@
 <%= turbo_frame_tag id="new_user_pdf"  do %>
 
-  <%= form_with model: @user_pdf, data: {controller: "upload"}  do |form| %>
+  <%= form_with model: @user_pdf, data: {controller: "upload", action: "submit->upload#submit"}  do |form| %>
+  <div data-upload-target="uploadArea">
     <%= form.label :pdf, class: "hidden"  %>
     <div class="mt-20 flex w-full items-center justify-center bg-grey-lighter">
       <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
@@ -27,6 +28,15 @@
             disabled: true%>
     </div>
     </div>
+  </div>
+  <!-- Loading state -->
+  <div data-upload-target="loading" class="mt-20 flex flex-col items-center text-slate-600 hidden">
+    <svg class="animate-spin h-8 w-8 text-slate-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+    </svg>
+    <p class="text-sm">Uploading and processing…</p>
+  </div>
   <% end %>
 
   <%#PDf information %>
