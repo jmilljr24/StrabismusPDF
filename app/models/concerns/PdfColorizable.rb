@@ -10,6 +10,7 @@ module PdfColorizable
       script = Rails.root.join("app", "assets", "python", "highlight.py")
       Open3.popen2("python3", "#{script}", "-i", "#{input_file}", "-o", "#{output_file}") do |stdin, stdout, status_thread|
         stdout.each_line do |line|
+          @last_line = line
           puts "LINE: #{line}"
           yield line.strip if block
         end
@@ -22,7 +23,8 @@ module PdfColorizable
       blob = ActiveStorage::Blob.create_and_upload!(
         io: new_file,
         filename: "#{file_name}_colored_v#{version_number}.pdf",
-        content_type: "application/pdf"
+        content_type: "application/pdf",
+        metadata: {status: @last_line}
       )
 
       colored_pdfs.attach(blob)

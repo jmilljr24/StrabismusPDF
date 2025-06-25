@@ -7,7 +7,6 @@ class ColorizeJob < ApplicationJob
 
     pdf.add_color do |status|
       now = monotonic_time
-      @last_status = status
       if last_broadcast_time.nil? || (now - last_broadcast_time) >= DEBOUNCE_TIME
         Turbo::StreamsChannel.broadcast_update_to pdf, target: "processing", content: status
         last_broadcast_time = now
