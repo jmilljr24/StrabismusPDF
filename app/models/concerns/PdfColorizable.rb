@@ -13,8 +13,8 @@ module PdfColorizable
           @last_line = line
           puts "LINE: #{line}"
           if line.strip.to_i % 20 == 0
-            yield line.strip.to_i if block
-            sleep 0.2
+            Turbo::StreamsChannel.broadcast_update_to self, target: "processing", content: "Processing Page: #{line}"
+            # yield line.strip.to_i if block
           end
         end
         raise "Processing failed" unless status_thread.value.success?
