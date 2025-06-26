@@ -67,7 +67,7 @@ group :development do
 
   gem "standard", "~> 1.32"
 
-  gem "erb_lint", "~> 0.5.0"
+  gem "erb_lint", "~> 0.9.0"
 
   gem "derailed"
 
