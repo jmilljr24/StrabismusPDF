@@ -88,7 +88,7 @@ gem "dockerfile-rails", ">= 1.5", group: :development
 
 gem "sentry-ruby", "~> 5.12"
 
-gem "sentry-rails", "~> 5.12"
+gem "sentry-rails", "~> 5.26"
 
 gem "glib2"
 
