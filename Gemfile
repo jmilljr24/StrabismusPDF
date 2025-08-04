@@ -71,7 +71,7 @@ group :development do
 
   gem "derailed"
 
-  gem "faker", "~> 3.2"
+  gem "faker", "~> 3.5"
 
   gem "pry", "~> 0.15.2"
 end

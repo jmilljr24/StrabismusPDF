@@ -173,7 +173,7 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    faker (3.5.1)
+    faker (3.5.2)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -505,7 +505,7 @@ DEPENDENCIES
   devise (~> 4.9)
   dockerfile-rails (>= 1.5)
   erb_lint (~> 0.9.0)
-  faker (~> 3.2)
+  faker (~> 3.5)
   foreman (~> 0.88.1)
   glib2
   htmlbeautifier (~> 1.4)
