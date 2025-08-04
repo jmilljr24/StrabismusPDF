@@ -112,7 +112,7 @@ gem "kamal", "~> 2.7"
 
 gem "thruster", "~> 0.1.14"
 
-gem "propshaft", "~> 1.1"
+gem "propshaft", "~> 1.2"
 
 gem "importmap-rails", "~> 2.1"
 
