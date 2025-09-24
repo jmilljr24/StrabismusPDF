@@ -94,8 +94,6 @@ gem "glib2"
 
 # gem "redis", "~> 5.0"
 
-gem "aws-sdk-s3", "~> 1.142", require: false
-
 gem "devise", "~> 4.9"
 
 gem "solid_queue", "~> 1.1"
