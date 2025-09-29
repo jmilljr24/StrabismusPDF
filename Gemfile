@@ -86,7 +86,7 @@ end
 gem "dockerfile-rails", ">= 1.5", group: :development
 # gem "hexapdf", github: "jmilljr24/hexapdf"
 
-gem "sentry-ruby", "~> 5.12"
+gem "sentry-ruby", "~> 5.28"
 
 gem "sentry-rails", "~> 5.26"
 
