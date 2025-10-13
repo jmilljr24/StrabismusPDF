@@ -165,7 +165,8 @@ GEM
     ffi (1.17.2-x86_64-darwin)
     ffi (1.17.2-x86_64-linux-gnu)
     ffi (1.17.2-x86_64-linux-musl)
-    foreman (0.88.1)
+    foreman (0.90.0)
+      thor (~> 1.4)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -487,7 +488,7 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   erb_lint (~> 0.9.0)
   faker (~> 3.5)
-  foreman (~> 0.88.1)
+  foreman (~> 0.90.0)
   glib2
   htmlbeautifier (~> 1.4)
   image_processing (~> 1.2)
