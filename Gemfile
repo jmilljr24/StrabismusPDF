@@ -61,7 +61,7 @@ group :development do
 
   # gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 
-  gem "rubocop", "~> 1.57"
+  gem "rubocop", "~> 1.80"
 
   gem "htmlbeautifier", "~> 1.4"
 
