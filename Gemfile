@@ -100,7 +100,7 @@ gem "solid_queue", "~> 1.1"
 
 gem "solid_cable", "~> 3.0"
 
-gem "foreman", "~> 0.88.1"
+gem "foreman", "~> 0.90.0"
 
 gem "tailwindcss-rails", "~> 4.3"
 
