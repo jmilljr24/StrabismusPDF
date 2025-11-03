@@ -75,7 +75,7 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    afm (0.2.2)
+    afm (1.0.0)
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt (3.1.20)
@@ -91,7 +91,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.3.0)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -271,9 +271,9 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    pdf-reader (2.14.1)
+    pdf-reader (2.15.0)
       Ascii85 (>= 1.0, < 3.0, != 2.0.0)
-      afm (~> 0.2.1)
+      afm (>= 0.2.1, < 2)
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
@@ -494,7 +494,7 @@ DEPENDENCIES
   importmap-rails (~> 2.2)
   jbuilder
   kamal (~> 2.7)
-  pdf-reader (~> 2.14)
+  pdf-reader (~> 2.15)
   pg (~> 1.1)
   propshaft (~> 1.2)
   pry (~> 0.15.2)

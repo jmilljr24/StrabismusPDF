@@ -114,4 +114,4 @@ gem "propshaft", "~> 1.2"
 
 gem "importmap-rails", "~> 2.2"
 
-gem "pdf-reader", "~> 2.14"
+gem "pdf-reader", "~> 2.15"
